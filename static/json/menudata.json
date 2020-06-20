@@ -16,8 +16,10 @@
             },
             {
                 "menucode": "CauTrucDuLieu",
-                "menuurl": "/index.html?idmenu=intro1",
+                "menuurl": "/index.html?idmenu=CauTrucDuLieu",
                 "menuname": "Cấu trúc dữ liệu",
+                "contenturl": "/document/CauTrucDuLieuDong/DanhSachLienKet/KhaiNiemDanhSach.txt",
+                "pdfurl": "/document/CauTrucDuLieuDong/DanhSachLienKet/Chuong-05.pdf",
                 "menuchildren": [],
                 "menuicon": "fal fa-chevron-double-right",
                 "menudes": "Cấu trúc dữ liệu",
