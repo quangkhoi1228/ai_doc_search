@@ -5,31 +5,37 @@
         "menuchildren": [
             {
                 "menucode": "CacChienLuocThietKeCuaGiaiThuat",
-                "menuurl": "/index.html?idmenu=intro",
+                "menuurl": "/index.html?idmenu=CacChienLuocThietKeCuaGiaiThuat",
                 "menuname": "Các chiến lược thiết kế của giải thuật",
                 "menuchildren": [],
+                "contenturl": "/document/CauTrucDuLieuDong/DanhSachLienKet/KhaiNiemDanhSach.txt",
+                "pdfurl": "/document/CauTrucDuLieuDong/DanhSachLienKet/Chuong-01-2018.pdf",
                 "menuicon": "fal fa-chevron-double-right",
-                "menudes": "Các chiến lược thiết kế của giải thuật"
+                "menudes": "Các chiến lược thiết kế của giải thuật",
+                "menutags": "chiến lược thiết kế"
             },
             {
                 "menucode": "CauTrucDuLieu",
-                "menuurl": "/index.html?idmenu=intro",
+                "menuurl": "/index.html?idmenu=intro1",
                 "menuname": "Cấu trúc dữ liệu",
                 "menuchildren": [],
                 "menuicon": "fal fa-chevron-double-right",
-                "menudes": "Cấu trúc dữ liệu"
+                "menudes": "Cấu trúc dữ liệu",
+                "menutags": "cấu trúc dữ liệu"
             },
             {
                 "menucode": "3_3",
-                "menuurl": "/index.html?idmenu=intro",
+                "menuurl": "/index.html?idmenu=intro2",
                 "menuname": "Độ phức tạp của giải thuật",
                 "menuchildren": [],
                 "menuicon": "fal fa-chevron-double-right",
-                "menudes": "Độ phức tạp của giải thuật"
+                "menudes": "Độ phức tạp của giải thuật",
+                "menutags": "độ phức tạp"
             }
         ],
         "menuicon": "fal fa-chevron-right",
-        "menudes": "Toàn vẹn và xác thực"
+        "menudes": "Toàn vẹn và xác thực",
+        "menutags": "tổng quan,thiết kế,cấu trúc,độ phức tạp"
     },
     {
         "menucode": "TimKiemVaSapXep",
@@ -37,11 +43,11 @@
         "menuchildren": [
             {
                 "menucode": "4_1",
-                "menuurl": "/index.html?idmenu=intro",
+                "menuurl": "/page/guide/communitystandards/astraders",
                 "menuname": "Giải thuật sắp xếp",
-                "menuchildren": [],
                 "menuicon": "fal fa-chevron-double-right",
-                "menudes": "Giải thuật sắp xếp"
+                "menudes": "Giải thuật sắp xếp",
+                "menuchildren": []
             },
             {
                 "menucode": "4_2",
@@ -53,7 +59,8 @@
             }
         ],
         "menuicon": "fal fa-chevron-right",
-        "menudes": "Tìm kiếm và sắp xếp"
+        "menudes": "Tìm kiếm và sắp xếp",
+        "menutags": "tìm kiếm,sắp xếp"
     },
     {
         "menucode": "CauTrucDuLieuDong",
@@ -61,11 +68,29 @@
         "menuchildren": [
             {
                 "menucode": "4_1",
-                "menuurl": "/index.html?idmenu=intro",
                 "menuname": "Danh sách liên kết",
-                "menuchildren": [],
                 "menuicon": "fal fa-chevron-double-right",
-                "menudes": "Danh sách liên kết"
+                "menudes": "Danh sách liên kết",
+                "menuchildren": [
+                    {
+                        "menucode": "KhaiNiemDanhSach",
+                        "menuurl": "/index.html?idmenu=KhaiNiemDanhSach",
+                        "menuname": "Khái niệm danh sách",
+                        "contenturl": "/document/CauTrucDuLieuDong/DanhSachLienKet/PhanLoaiDanhSach.txt",
+                        "pdfurl": "/document/CauTrucDuLieuDong/DanhSachLienKet/Chuong-01-2018.pdf",
+                        "menuchildren": [],
+                        "menuicon": "fal fa-quote-right",
+                        "menudes": "Phân loại danh sách"
+                    },
+                    {
+                        "menucode": "4_2",
+                        "menuurl": "/page/guide/communitystandards/astraders",
+                        "menuname": "Phân loại danh sách",
+                        "menuchildren": [],
+                        "menuicon": "fal fa-quote-right",
+                        "menudes": "Giải thuật tìm kiếm"
+                    }
+                ]
             },
             {
                 "menucode": "4_2",

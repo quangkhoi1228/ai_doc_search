@@ -3,8 +3,46 @@ shinobi.indexrender = {
     init: function () {
         shinobi.indexrender.getMenuData(function () {
             shinobi.indexrender.renderMenu();
+            shinobi.indexrender.renderContent();
             shinobi.indexrender.addEventSearch();
         })
+    },
+
+    renderContent: function () {
+
+        var data = shinobi.indexrender.menuData;
+        var result = shinobi.indexrender.getCurrentMenuData(data, {
+            hasFound: false,
+            value: null,
+        });
+
+        var contentIframe = document.getElementById('contentIframe');
+        var currentItem = result.value;
+        contentIframe.src = (currentItem) ? currentItem.pdfurl : '';
+    },
+
+    getCurrentMenuData: function (data, option) {
+        var returnValue = null;
+        var menuId = shinobi.util.getSearchParam('idmenu');
+        data.forEach(function (item) {
+
+            if (item.menucode.trim().toString() == menuId.trim().toString()) {
+
+                if (option.hasFound == false) {
+                    option.hasFound = true;
+                    option.value = item;
+                }
+
+            } else {
+                if (item.hasOwnProperty('menuchildren')) {
+                    if (option.hasFound == false) {
+                        shinobi.indexrender.getCurrentMenuData(item.menuchildren, option)
+                    }
+                }
+            }
+        })
+
+        return option;
     },
 
     addEventSearch: function () {
@@ -16,6 +54,9 @@ shinobi.indexrender = {
                     case 'menu':
                         shinobi.indexrender.searchMenu(request);
                         break;
+                    case 'tags':
+                        shinobi.indexrender.searchTags(request);
+                        break;
                     case 'content':
                         shinobi.indexrender.searchContent(request);
                         break;
@@ -26,28 +67,130 @@ shinobi.indexrender = {
         }
     },
 
+    searchTags: function (request) {
+        if (request.searchkey.trim() == '') {
+            shinobi.indexrender.renderMenu();
+        } else {
+            var data = shinobi.indexrender.menuData;
+            var newData = [];
+            var option = shinobi.indexrender.searchDataMenuTags(data, {
+                request: request,
+                newData: newData,
+            });
+            shinobi.indexrender.renderMenu(option.newData);
+
+        }
+
+    },
+
+    searchDataMenuTags: function (data, option) {
+        data.forEach(function (item, index) {
+            var listTag = (item.hasOwnProperty('menutags')) ? item.menutags.split(',') : [];
+            if (!listTag.includes(option.request.searchkey.toLowerCase())) {
+                if (item.hasOwnProperty('menuchildren') && item.menuchildren.length > 0) {
+                    shinobi.indexrender.searchDataMenuTags(item.menuchildren, option);
+                }
+            } else {
+                option.newData.push(item);
+            }
+        })
+
+        return option;
+    },
+
     searchMenu: function (request) {
+        if (request.searchkey.trim() == '') {
+            shinobi.indexrender.renderMenu();
+        } else {
+            var data = shinobi.indexrender.menuData;
+            var newData = [];
+            var option = shinobi.indexrender.searchDataMenuTitle(data, {
+                request: request,
+                newData: newData,
+            });
+            shinobi.indexrender.renderMenu(option.newData);
 
-        console.log(request);
+        }
 
+    },
+
+    searchDataMenuTitle: function (data, option) {
+        data.forEach(function (item, index) {
+            if (!item.menuname.toLowerCase().includes(option.request.searchkey.toLowerCase())) {
+                if (item.hasOwnProperty('menuchildren') && item.menuchildren.length > 0) {
+                    shinobi.indexrender.searchDataMenuTitle(item.menuchildren, option);
+                }
+            } else {
+                option.newData.push(item);
+            }
+        })
+
+        return option;
     },
 
     searchContent: function (request) {
+        if (request.searchkey.trim() == '') {
+            shinobi.indexrender.renderMenu();
+        } else {
+            var data = shinobi.indexrender.menuData;
+            var newData = [];
+            var option = shinobi.indexrender.searchDataMenuContent(data, {
+                request: request,
+                newData: newData,
+                callback: function (currentOption) {
+                    console.log(currentOption);
+                    shinobi.indexrender.renderMenu(currentOption.newData);
+                }
+            });
 
+
+
+        }
     },
 
-    renderMenu: function () {
+    searchDataMenuContent: function (data, option) {
+        data.forEach(function (item, index) {
+            if (item.hasOwnProperty('contenturl')) {
+                var content = shinobi.xhradapter.getResource(item.contenturl, function (response) {
+                    var data = response.toString().toLowerCase();
+                    if (!data.includes(option.request.searchkey.toLowerCase())) {
+                        if (item.hasOwnProperty('menuchildren') && item.menuchildren.length > 0) {
+                            shinobi.indexrender.searchDataMenuContent(item.menuchildren, option);
+                        }
+                    } else {
+                        option.newData.push(item);
+                    }
+
+                    if (option.hasOwnProperty('callback')) {
+                        option.callback(option);
+                    }
+                })
+            } else {
+                if (item.hasOwnProperty('menuchildren') && item.menuchildren.length > 0) {
+                    shinobi.indexrender.searchDataMenuContent(item.menuchildren, option);
+                }
+            }
+        })
+    },
+
+    renderMenu: function (dataInput) {
         var container = document.getElementById('menuLeft');
         container.innerHTML = '';
-        var data = shinobi.indexrender.menuData;
-        shinobi.menurender.build('#menuLeft', data);
+        var data = (dataInput) ? dataInput : shinobi.indexrender.menuData;
+        if (data.length > 0) {
+            shinobi.menurender.build('#menuLeft', data);
+            shinobi.menumodule.activeCurrentTab(container, {
+                includesSearch: true
+            });
+        } else {
+            container.innerHTML = '<i>Không tìm thấy kết quả</i>';
+        }
+
 
     },
     getMenuData: function (callback) {
         shinobi.xhradapter.getResource('/static/json/menudata.json', function (response) {
-            console.log(response);
             shinobi.indexrender.menuData = JSON.parse(response);
-            console.log(shinobi.indexrender.menuData)
             callback();
         })
     },
