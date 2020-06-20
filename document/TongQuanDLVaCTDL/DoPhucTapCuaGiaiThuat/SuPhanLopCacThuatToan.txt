@@ -1,0 +1,8 @@
+﻿SỰ PHÂN LỚP CÁC THUẬT TOÁN
+O(1) Độ phức tạp hằng số
+O(log(n)) Độ phức tạp logarit
+O(n) Độ phức tạp tuyến tính
+O(nlog(n)) Độ phức tạp nlogn
+O(n^k) Độ phức tạp đa thức
+O(k^n) Độ phức tạp hàm mũ
+O(n!) Độ phức tạp giai thừa

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/shinobi_2.css">
+    <script>
+        var shinobi = {};
+    </script>
+    <script defer src="/static/js/shinobi_2.js"></script>
+    <script defer src="/static/js/indexrender.js"></script>
+    <script>
+        function resizeIframe(obj) {
+            obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar is-primary is-fixed-top" role="navigation"
+        aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item logo">
+                <p class="title has-text-white">AIDocSearch</p>
+            </a>
+            <div class="navbar-item">
+                <div class="field has-addons ">
+                    <p class="control">
+                        <span class="select has-text-dark">
+                            <select snb-key="searchtype">
+                                <option value="menu">Bài học</option>
+                                <option value="content">Từ khoá</option>
+                            </select>
+                        </span>
+                    </p>
+                    <p class="control is-expanded">
+                        <input snb-key="searchkey" class="input has-text-dark"
+                            type="text" placeholder="Nội dung">
+                    </p>
+                    <p class="control">
+                        <a class="button is-link submit-button"><span
+                                class="icon"><i
+                                    class="fal fa-search"></i></span><span>
+                                Tìm kiếm</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <a role="button" class="navbar-burger" aria-label="menu"
+                aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="field">
+                    <div class="control">
+                        <a class="button is-dark" href="https://github.com/quangkhoi1228/algorithm_documents_search"
+                            target="_blank">
+                            <span class="icon">
+                                <i class="fab fa-github"></i>
+                            </span>
+                            <span>Github</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class=" filter-section">
+        <div class="container">
+            <div class="field has-addons shinobimenu is-marginless">
+                <p class="control">
+                    <span class="select ">
+                        <select snb-key="searchtype">
+                            <option value="menu">Bài học</option>
+                            <option value="content">Từ khoá</option>
+                        </select>
+                    </span>
+                </p>
+                <p class="control is-expanded">
+                    <input snb-key="searchkey" class="input" type="text"
+                        placeholder="Nội dung">
+                </p>
+                <p class="control">
+                    <a class="button is-link submit-button"><span
+                            class="icon"><i
+                                class="fal fa-search"></i></span><span>
+                            Tìm kiếm</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="">
+            <div class="columns">
+                <div class="column is-3" style="
+                -webkit-box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+                -moz-box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+            ">
+
+                    <div id="menuLeft">
+                    </div>
+
+                </div>
+                <div class="column">
+                    <iframe
+                        src="/document/TongQuanDLVaCTDL/CacChienLuocThietKeCuaGiaiThuat/Chuong-05.pdf"
+                        style="height:calc( 100vh - 5.25rem ) ;width: 100%;"></iframe>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            shinobi.initbulma.build();
+            shinobi.indexrender.init();
+        });
+    </script>
+</body>
+
+
+</html>

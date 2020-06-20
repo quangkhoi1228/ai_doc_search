@@ -1,0 +1,19 @@
+BIẾN CẤP PHÁT ĐỘNG
+- Là các biến được tạo khi cấp phát vùng nhớ. 
+- Ví dụ: 
+struct PS
+{
+	int ts, ms;
+}; 
+- Tạo vùng nhớ cho biến kiểu nguyên: 
+	malloc(sizeof(int)); hoặc new int; 
+- Tạo vùng nhớ cho biến kiểu PS: 
+	malloc(sizeof(PS)); hoặc new PS;
+- Biến cấp phát động (biến động) có các đặc điểm sau: 
+	Không được khai báo tường minh, không có tên gọi. 
+	Cấp phát khi cần sử dụng, khi hết sử dụng phải giải phóng. 
+	Được cấp phát trong heap segment. 
+	Kích thước vùng nhớ được cấp phát tùy theo yêu cầu và giới hạn bộ nhớ.
+
+
+

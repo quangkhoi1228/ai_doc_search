@@ -1,0 +1,2 @@
+﻿KHÁI NIỆM 
+Thuật toán (giải thuật) là tập hợp các thao tác có thứ tự sao cho khi thực hiện một số tao tác hữu hạn đó thì đạt được mục tiêu.

@@ -1,0 +1,82 @@
+[
+    {
+        "menucode": "TongQuanDLVaCTDL",
+        "menuname": "Tổng quan DL và CTDL",
+        "menuchildren": [
+            {
+                "menucode": "CacChienLuocThietKeCuaGiaiThuat",
+                "menuurl": "/index.html?idmenu=intro",
+                "menuname": "Các chiến lược thiết kế của giải thuật",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Các chiến lược thiết kế của giải thuật"
+            },
+            {
+                "menucode": "CauTrucDuLieu",
+                "menuurl": "/index.html?idmenu=intro",
+                "menuname": "Cấu trúc dữ liệu",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Cấu trúc dữ liệu"
+            },
+            {
+                "menucode": "3_3",
+                "menuurl": "/index.html?idmenu=intro",
+                "menuname": "Độ phức tạp của giải thuật",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Độ phức tạp của giải thuật"
+            }
+        ],
+        "menuicon": "fal fa-chevron-right",
+        "menudes": "Toàn vẹn và xác thực"
+    },
+    {
+        "menucode": "TimKiemVaSapXep",
+        "menuname": "Tìm kiếm và sắp xếp",
+        "menuchildren": [
+            {
+                "menucode": "4_1",
+                "menuurl": "/index.html?idmenu=intro",
+                "menuname": "Giải thuật sắp xếp",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Giải thuật sắp xếp"
+            },
+            {
+                "menucode": "4_2",
+                "menuurl": "/page/guide/communitystandards/astraders",
+                "menuname": "Giải thuật tìm kiếm",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Giải thuật tìm kiếm"
+            }
+        ],
+        "menuicon": "fal fa-chevron-right",
+        "menudes": "Tìm kiếm và sắp xếp"
+    },
+    {
+        "menucode": "CauTrucDuLieuDong",
+        "menuname": "Cấu trúc dữ liệu động",
+        "menuchildren": [
+            {
+                "menucode": "4_1",
+                "menuurl": "/index.html?idmenu=intro",
+                "menuname": "Danh sách liên kết",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Danh sách liên kết"
+            },
+            {
+                "menucode": "4_2",
+                "menuurl": "/page/guide/communitystandards/astraders",
+                "menuname": "Danh sách liên kết đơn",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Danh sách liên kết đơn"
+            }
+        ],
+        "menuicon": "fal fa-chevron-right",
+        "menudes": "Cấu trúc dữ liệu động"
+    }
+]

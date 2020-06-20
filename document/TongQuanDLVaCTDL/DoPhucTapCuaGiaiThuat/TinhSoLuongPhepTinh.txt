@@ -1,0 +1,41 @@
+﻿TÍNH SỐ LƯỢNG PHÉP TÍNH
+Phương pháp tính số lượng phép tính phụ thuộc
+vào chiến lược đánh giá thuật toán. Có 3 chiến lược
+đánh giá thuật toán:
+– Đánh giá theo trường hợp tốt nhất
+– Đánh giá theo trường hợp xấu nhất.
+– Đánh giá theo trường hợp trung bình.
+Thông thường, với mục đích đánh giá chung, một
+thuật toán sẽ được đánh giá theo trường hợp xấu
+nhất. Mục đích là để xác định thuật toán có khả thi
+hay không. Việc đánh giá theo trường hợp xấu nhất
+có các đặc điểm sau:
+– Tính toán đơn giản.
+– Không ước lượng được sự hiệu quả.
+Cho n là kích thước dữ liệu đầu vào, số lượng phép
+tính của một thuật toán được tính theo các quy tắc
+sau:
+- Số phép tính cho một công việc là
+fA(n) = 1.
+- Số phép tính cho một công việc C gồm 2 công việc
+liên tiếp A và B là:
+fC(n) = fA(n) + fB(n)
+- Số phép tính cho một công việc C chứa hai công
+việc được lựa chọn A và B là:
+fc(n) = max(fB(n),fA(n));
+- Số phép tính cho một công việc đệ quy A bằng
+tổng số phép tính tại các bước gọi đệ quy.
+
+TÍNH SỐ LƯỢNG PHÉP TÍNH
+- 1 phép gán s = 0 → số lượng phép tính: 1
+- 1 phép gán i = 1 → số lượng phép tính: 1
+- liên tiếp n lần phép tính s = s + i
+→ số lượng phép tính: 1+..+1 = n
+- liên tiếp n lần phép kiểm tra i <= n:
+→ số lượng phép tính: n
+- liên tiếp n lần phép tăng i++:
+→ số lượng phép tính: n
+→ Số lượng phép tính của đoạn chương trình: 3n+2.
+
+
+C

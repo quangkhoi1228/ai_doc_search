@@ -1,0 +1,83 @@
+PHƯƠNG PHÁP ĐỊA CHỈ MỞ
+*PHƯƠNG PHÁP ĐỊA CHỈ MỞ (Open Addressing)
+Phương pháp này giải quyết đụng độ bằng thăm dò (probe) từng bước những địa chỉ khác còn trống trên bảng băm kích thước m nhờ một hàm băm thăm dò.
+Hàm băm thăm dò f có dạng như sau:
+f(k, i) = (h(k) + g(k, i)) % m
+- h(k) là một hàm băm.
+- g(k, i) là một hàm số theo i, k
+- i là lần thăm dò
+
+*CÁC PHƯƠNG PHÁP THĂM DÒ
+▪ Phương pháp thăm dò tuyến tính: nếu hàm g(k, i) là
+một hàm tuyến tính theo i có dạng g(k, i) = a*i + b.
+Có thể chọn g(k, i) = i.
+▪ Phương pháp thăm dò bậc 2 (toàn phương): nếu hàm g(k, i) là một hàm bậc 2 theo i có dạng
+g(k, i) = a * i2 + b * i + c. Có thể chọn g(k, i) = i2
+▪ Phương pháp băm kép: nếu g(k, i) là một hàm số có
+dạng
+g(k, i) = i * h1(k).
+h1(k) được gọi là hàm băm phụ và cần được xây dựng theo kích thước bảng băm m như sau:
+p
+• Trường hợp m = 2
+, h1(k) cần trả về giá trị lẻ.
+• Trường hợp m là số nguyên tố, h1(k) cần có miền giá trị là (0, m)
+
+*TỔ CHỨC DỮ LIỆU
+#define DEL -1
+#define EMPTY 0
+// giả sử khóa có giá trị là số nguyên dương. struct CHashtable {
+int m, n;
+int * buckets; // giả sử bảng băm chỉ lưu khóa };
+
+*CÁC THAO TÁC
+▪ Tạo bảng băm đóng
+void CreateCHashtable(CHashtable &ht, int m) {
+ht.buckets = new int[m];
+if (ht.buckets == NULL) m = 0;
+else {
+for (int i = 0; i < m; i++) ht.buckets[i] = EMPTY;
+ht.m = m; }
+ht.n = 0; }
+▪ Đưa phần tử có khóa x vào bảng băm
+int g(int key, int m, int i); // hàm tuyến tính, bậc 2 hay hàm
+// băm phụ
+int h(int key, int m); // hàm băm dạng chia hay nhân
+int CHashCode(int key, int m, int i) { return (h(key, m) + g(key, m, i)) % m;
+}
+int CPutKey(CHashtable &ht, int key) { if (ht.m == 0 || ht.n == ht.m) return 0; int i = 0, k;
+do {
+k = CHashCode(key, ht.m, i); i++; } while (((ht.buckets[k] != EMPTY) ||
+(ht.buckets[k] != DEL)) && (i <= ht.m)); if (i >= ht.m) return 0;
+ht.buckets[k] = key; ht.n++;
+return 1; }
+▪Lấy địa chỉ của phần tử có khóa x int CGetKey(CHashtable ht, int key) {
+if (ht.m == 0) return -1; int i = 0, k;
+do {
+k = CHashCode(key, ht.m, i); i++;
+} while ((i <= ht.m) && (ht.buckets[k] != key) && (ht.buckets[k] != EMPTY));
+if (ht.buckets[k] == key) return k; else return -1; }
+▪ Lấy phần tử tại bucket i
+int CGetBucket(CHashtable ht, int i) {
+if (ht.m == 0) return EMPTY;
+return ht.buckets[i]; }
+int isFull(CHashtable ht) { return ht.n == ht.m - 1;
+}
+▪ Xóa phần tử có khóa x
+void CRemoveKey(CHashtable &ht, int key) {
+if (ht.m == 0) return; int i = 0, k;
+do {
+k = CHashCode(key, ht.m, i); i++;
+} while ((i <= ht.m) && (ht.buckets[k] != key) &&
+(ht.buckets[k] != EMPTY));
+if ((i >= ht.m) || (ht.buckets[k] == EMPTY)) return; ht.buckets[k] = DEL; ht.n--; }
+▪ Hủy toàn bộ bảng băm
+void RemoveCHashtable(CHashtable &ht) {
+if (ht.m == 0) return; delete[] ht.buckets; ht.buckets = NULL; m = 0;
+}
+
+*ĐẶC ĐIỂM
+▪ Số phần tử cố định
+▪ Mỗi khóa ứng với một địa chỉ
+▪ Thời gian truy xuất thấp.
+▪ Xóa một phần tử không thu hồi được vùng nhớ của nó.
+▪ Luôn chừa 1 phần tử trống trong bảng băm, nghĩa là nếu bảng băm có kích thước m thì sẽ đầy khi số phần tử trong bảng băm là m-1.

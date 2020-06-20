@@ -1,0 +1,16 @@
+DANH SÁCH LIÊN KẾT CÓ THỨ TỰ 
+Danh sách liên kết có thứ tự (Ordered List) là danh sách mà các phần tử của nó phải đảm bảo một thứ tự nào đó. Vì vậy, việc thêm phần tử cần phải xét đến thứ tự của danh sách. Đối với danh sách liên kết có thứ tự được cài đặt theo danh sách đơn, có hai thao tác cần được hiệu chỉnh là: 
+- Thêm phần tử vào danh sách 
+	int Compare(TenDulieu x, TenDulieu y); // trả về -1 nếu x < y, 0 nếu x = y, 1 nếu x > y 
+	void Add(TenDS &l, Node *p) { 	
+		Node *q = NULL, *h = l.pHead; while (h) { 
+			if (Compare(h->info, p->info) >= 0) break; 
+		q = h; h = h->pNext; } 
+	AddAfter(l, q, p); 
+	}
+- Tìm kiếm phần tử trong danh sách
+	Node * Search(TenDS &l, TenDulieu x) { 
+		Node *p = l.pHead; while (p) { 
+			if (Compare(p->info, x) == 0) break;
+			else if (Compare(p->info, x) > 0) {p = NULL; break;}
+			p = p->pNext; } return p; }

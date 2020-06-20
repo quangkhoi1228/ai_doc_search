@@ -1,0 +1,6 @@
+﻿CÁC KIỂU DỮ LIỆU CƠ BẢN
+Là các kiểu dữ liệu được định nghĩa bởi ngôn ngữ
+lập trình. Kiểu dữ liệu cơ bản được gọi là kiểu dữ
+liệu tiền định hay nguyên thủy (primitive).
+Trong C/C++, các kiểu dữ liệu cơ bản gồm char,
+short, long, int, float, double, enum, ...

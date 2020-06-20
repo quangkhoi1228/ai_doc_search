@@ -1,0 +1,84 @@
+STACK
+- Là cấu trúc dữ liệu cho phép lưu các phần tử chứa dữ liệu khác. 
+- Phần tử chứa dữ liệu được quản lý theo nguyên tắc LIFO (Last In First Out) trong đó phần tử được đưa vào stack trước sẽ được lấy ra khỏi stack sau 
+- Stack có đỉnh Stack luôn chỉ vào phần tử được thêm sau cùng.
+Stack có các thao tác đặc trưng sau: 
+- Push: thêm phần tử dữ liệu x vào stack. 
+- Pop: lấy đối tượng tại đỉnh ra khỏi stack. 
+- IsEmpty: kiểm tra stack có rỗng hay không. 
+- Top: lấy giá trị của phần tử tại đỉnh stack mà không hủy nó. 
+Stack có thể được cài đặt theo: 
+- Mảng 
+	+ Khai báo cấu trúc dữ liệu 
+		stack #define MAX 100 
+		struct Stack { 
+			TenDulieu data[MAX]; 
+			int sp; //stack pointer };
+	+ Tạo Stack rỗng 
+		void CreateStack(Stack &s) { 
+			s.sp = -1; 
+		} 
+	+ Kiểm tra Stack có rỗng hay không 
+		int IsEmpty(Stack &s) { 
+			return (s.sp == -1); 
+		}
+	+  Kiểm tra Stack đầy 
+		int IsFull(Stack &s) { 
+			return (s.sp >= MAX); 
+		}
+	+  Đưa phần tử vào Stack 
+		int Push(Stack &s, TenDulieu x) { 
+			if (IsFull(s)) 
+				return 0; 	
+			s.sp++; s.data[s.sp] = x; return 1; 
+		}
+	+  Lấy phần tử ra khỏi Stack 
+		int Pop(Stack &s, TenDulieu &x) { 
+			if (IsEmpty(s)) return 0; 
+			x = s.data[s.sp] s.sp--; return 1; 
+		}
+	+  Lấy giá trị phần tử ở đỉnh stack 
+		int Top(Stack &s, TenDulieu &x) { 
+			if (IsEmpty(s)) return 0; 
+			x = s.data[sp]; return 1; 
+		}
+- Danh sách đơn
+	+ Khai báo cấu trúc dữ liệu stack tương tự danh sách đơn 
+		struct TenDulieu { // Các trường dữ liệu cần quản lý }; 
+		struct Node { TenDulieu info; Node * pNext; }
+	+ Khai báo cấu trúc dữ liệu stack tương tự danh sách đơn 
+		struct Stack { 
+			Node * pHead, *pTail; 
+		}; 
+	+ Tạo Stack rỗng: 
+		void CreateStack(Stack &s) { 
+			s.pHead = NULL; s.pTail = NULL; 
+		}
+	+  Kiểm tra Stack rỗng 
+		int IsEmpty(Stack &s) { 
+			return s.pHead == NULL; 
+		}
+	+  Đưa phần tử dữ liệu vào stack 
+		void Push(Stack &s, Node *p) { 
+			if (s.pHead == NULL) { 
+				s.pHead = p; s.pTail = p; } 
+			else { p->pNext = s.pHead; s.pHead = p; 
+			} 
+		}
+	+ Lấy phần tử dữ liệu ra khỏi stack 
+		int Pop(Stack &s, TenDulieu &x) { 
+			Node *p; 
+			if (s.pHead == NULL)  return 0; 
+			p = s.pHead; s.pHead = p->pNext; 
+			if (s.pHead == NULL) s.pTail = NULL; 
+			x = p->info; delete p; return 1; 
+		}
+	+  Lấy dữ liệu của phần tử tại đỉnh stack 
+		int Top(Stack &s, TenDulieu &x) { 
+			if (IsEmpty(s)) return 0; 
+			x = s.pHead->info; 
+			return 1; 
+		}
+Ứng dụng của stack: 
+- Khử đệ quy đuôi 
+- Lưu vết các quá trình quay lui, vét cạn, tìm kiếm theo chiều sâu.

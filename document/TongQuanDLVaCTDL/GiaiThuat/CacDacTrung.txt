@@ -1,0 +1,6 @@
+﻿CÁC ĐẶC TRƯNG 
+- Tính đúng đắn 
+- Tính hữu hạn (dừng) 
+- Tính xác định 
+- Tính khả thi (hiệu quả) 
+- Tính phổ dụng (phổ quát)

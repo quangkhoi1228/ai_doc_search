@@ -1,0 +1,5 @@
+﻿ Duyệt toàn bộ
+- Đệ quy quay lui
+- Chia để trị (Divide and Conquer)
+- Chiến lược tham lam (Greedy)
+- Quy hoạch động (Dynamic Programming)

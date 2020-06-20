@@ -1,0 +1,4 @@
+﻿QUAN HỆ GIỮA GIẢI THUẬT VÀ CTDL
+- Dữ liệu là đối tượng xử lý của giải thuật
+- Giải thuật được xây dựng phụ thuộc vào CTDL
+- CTDL được định nghĩa tốt sẽ giúp xây dựng giải thuật tốt.

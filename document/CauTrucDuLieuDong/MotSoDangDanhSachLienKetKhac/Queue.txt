@@ -1,0 +1,63 @@
+QUEUE
+- Là cấu trúc dữ liệu cho phép lưu các phần tử chứa dữ liệu khác. 
+- Phần tử chứa dữ liệu được quản lý theo nguyên tắc FIFO (First In First Out) trong đó phần tử được đưa vào hàng đợi trước sẽ được lấy ra trước
+Hàng đợi có các thao tác đặc trưng sau: 
+- EnQueue: thêm phần tử vào hàng đợi 
+- DeQueue: lấy phần tử ra khỏi hàng đợi 
+- IsEmpty: kiểm tra hàng đợi có rỗng không 
+- Front: lấy dữ liệu của phần tử đầu hàng đợi mà không hủy nó. 
+Hàng đợi được cài đặt theo: 
+- Mảng 
+	+ Khai báo kiểu dữ liệu 
+		#define MAX 100 
+		struct TenDulieu { // Dữ liệu cần quản lý }; 
+		struct Queue { TenDulieu data[MAX]; int Front, Rear; };
+	+ Tạo hàng đợi rỗng 
+		void CreateQueue(Queue &q) { 
+			q.Front = -1; q.Rear = -1; } 
+	+ Kiểm tra hàng đợi có rỗng hay không 
+		int IsEmpty(Queue &q) { 
+			return q.Front == -1; }
+	+ Thêm phần tử vào hàng đợi 
+		int EnQueue(Queue &q, TenDulieu x) { 
+			if ((q.Front == q.Rear+1) || (q.Rear-q.Front+1 == MAX)) return 0; // hàng đợi đã đầy 
+			if (q.Front == -1) q.Front = 0; 
+			q.Rear++; 
+			if (q.Rear == MAX) q.Rear = 0; 
+			q.data[q.Rear] = x; 
+			return 1; }
+	+ Lấy phần tử ra khỏi hàng đợi 
+		int DeQueue(Queue &q, TenDulieu &x) { 
+		if (IsEmpty(q)) return 0; 
+		x = q.data[q.Front]; 
+		if (q.Front == q.Rear) { q.Front = -1; q.Rear = -1; } 
+		else { q.Front++; 	
+			if (q.Front >= MAX) q.Front = 0; } 
+		return 1; }
+
+- Danh sách đơn
+	+ Khai báo cấu trúc dữ liệu 
+		struct TenDulieu { // Dữ liệu quản lý }; 
+		struct Node { TenDulieu info; Node *pNext; };
+	+  Khai báo cấu trúc dữ liệu 	
+		struct Queue { Node *pHead, *pTail; }; 
+	+ Tạo hàng đợi rỗng 	
+		void CreateQueue(Queue &q) { q.pHead = NULL; q.pTail = NULL; }
+	+  Kiểm tra hàng đợi có rỗng hay không 
+		int IsEmpty(Queue &q) { return q.pHead == NULL; }
+	+ Thêm một phần tử vào hàng đợi 
+		void EnQueue(Queue &q, Node *p) { 
+			if (q.pHead == NULL) { q.pHead = p; q.pTail = p; } 
+			else { q.pTail->pNext = p; q.pTail = p; } }
+	+  Lấy một phần tử ra khỏi hàng đợi 
+		int DeQueue(Queue &q, TenDulieu &x) {
+			Node *p; if (q.pHead == NULL) 
+				return 0; 
+			p = q.pHead; q.pHead = p->pNext; 
+			if (q.pHead == NULL) q.pTail = NULL; 
+		x = p->info; delete p; return 1; 
+		}
+Hàng đợi được ứng dụng: 
+- Tổ chức lưu vết quá trình tìm kiếm theo chiều rộng, quay lui, vét cạn 
+- Tổ chức quản lý và phân phối công việc
+

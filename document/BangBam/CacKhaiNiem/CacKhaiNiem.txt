@@ -1,0 +1,28 @@
+Các Khái Niệm
+*BẢNG BĂM (Hashtable)
+Khái niệm bảng băm: là một cấu trúc dữ liệu tương tự mảng có kích thước m, cho phép ánh xạ một giá trị khóa thành một địa chỉ trong đoạn [0, m-1] nhằm xác định nhanh chóng phần tử có khóa cần xử lý.
+
+*HÀM BĂM (Hash function)
+Ánh xạ biến giá trị khóa thành địa chỉ trong bảng băm
+Tính chất của hàm băm:
+- Phải trả về giá trị trong đoạn [0, m-1]
+- Tính toán đơn giản với độ phức tạp O(1)
+- Không lãng phí không gian. Với mỗi địa chỉ trong bảng băm, phải có ít nhất 1 khóa có giá trị hàm băm bằng nó.
+- Tối thiểu hóa đụng độ. Các khóa khác nhau sẽ có giá trị hàm băm ít trùng nhau.
+
+*ĐỤNG ĐỘ (Collision)
+Giả sử có hàm băm f(k), đụng độ là hiện tượng có hai khóa k1 và k2 không trùng nhau nhưng f(k1) = f(k2)
+
+*CÁC DẠNG HÀM BĂM
+-Hàm băm dạng bảng: các khóa được liệt kê tương ứng với địa chỉ.
+-Hàm băm dùng phương pháp chia: là hàm băm có dạng:
+f(k) = k % m
+trong đó m là kích thước của bảng băm, k là khóa có giá trị nguyên.
+Để tránh hiện tượng như ví dụ 2: kích thước bảng băm m sẽ được chọn là số nguyên tố nhỏ nhất và lớn hơn hoặc bằng kích thước bảng băm cần thiết.
+-Hàm băm dùng phương pháp nhân: là hàm băm có dạng:
+f(k) = m * {k * A}
+- m là kích thước của bảng băm, m thường chọn là 2p
+- k là khóa.
+- A là hằng số tùy chọn trong khoảng (0, 1). Knuth đề
+nghị A = (5 + 1) / 2.
+- {} là phép toán lấy phần thập phân.
