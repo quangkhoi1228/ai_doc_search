@@ -16,6 +16,10 @@ Tìm kiếm tài liệu phân tích và thiết kế thuật toán
     <i>Truy cập localhost:7979 để thấy kết quả</i>
 </p>
 
+<img src="/static/image/overview.png">
+<img src="/static/image/tags.png">
+
+
 
 <h1>Cấu hình data</h1>
 <pre>
