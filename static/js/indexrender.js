@@ -19,6 +19,23 @@ shinobi.indexrender = {
         var contentIframe = document.getElementById('contentIframe');
         var currentItem = result.value;
         contentIframe.src = (currentItem) ? currentItem.pdfurl : '';
+        var tagsButton = document.querySelector('.button[data-target="quickviewDefault"]');
+        if (currentItem) {
+            tagsButton.classList.remove('is-hidden');
+
+
+            var tagsContainer = document.querySelector('#quickviewDefault .quickview-body .quickview-block');
+            tagsContainer.innerHTML = '';
+            var listTags = (currentItem.hasOwnProperty('menutags')) ? currentItem.menutags.split(',') : [];
+            listTags.forEach(function (tagItem) {
+                var tag = document.createElement('span');
+                tag.setAttribute('class', 'tag is-link is-rounded');
+                tag.innerHTML = tagItem;
+                tagsContainer.appendChild(tag);
+            })
+        } else {
+            tagsButton.classList.add('is-hidden');
+        }
     },
 
     getCurrentMenuData: function (data, option) {

@@ -5,16 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/static/css/shinobi_2.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+
     <script>
         var shinobi = {};
     </script>
     <script defer src="/static/js/shinobi_2.js"></script>
     <script defer src="/static/js/indexrender.js"></script>
-    <script>
-        function resizeIframe(obj) {
-            obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-        }
-    </script>
 </head>
 
 <body class="has-navbar-fixed-top">
@@ -97,10 +94,31 @@
                     <iframe id="contentIframe" src=""
                         style="height:calc( 100vh - 4.35rem ) ;width: 100%;"></iframe>
 
+                    <div class="tags-container" style="
+                    position: fixed;
+                    right: 3rem;
+                    top: 30%;
+                ">
+                        <a class="button is-info is-icon is-rounded tooltip has-tooltip-left"
+                            data-show="quickview"  data-tooltip="Hiển thị từ khóa liên quan"
+                            data-target="quickviewDefault"><span class="icon"><i
+                                    class="fa fa-tags"></i></span></a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    <div id="quickviewDefault" class="quickview">
+        <header class="quickview-header is-link">
+            <p class="title">Liên quan</p>
+            <span class="delete" data-dismiss="quickview"></span>
+        </header>
+
+        <div class="quickview-body">
+            <div class="quickview-block quickview-block has-padding-1-rem tags">
+            </div>
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             shinobi.initbulma.build();
