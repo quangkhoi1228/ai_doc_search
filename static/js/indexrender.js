@@ -22,8 +22,6 @@ shinobi.indexrender = {
         var tagsButton = document.querySelector('.button[data-target="quickviewDefault"]');
         if (currentItem) {
             tagsButton.classList.remove('is-hidden');
-
-
             var tagsContainer = document.querySelector('#quickviewDefault .quickview-body .quickview-block');
             tagsContainer.innerHTML = '';
             var listTags = (currentItem.hasOwnProperty('menutags')) ? currentItem.menutags.split(',') : [];
@@ -67,6 +65,7 @@ shinobi.indexrender = {
         var button = container.querySelector('.submit-button');
         button.onclick = function () {
             shinobi.mapping.getValueElement(container, function (request) {
+                console.warn(request);
                 switch (request.searchtype) {
                     case 'menu':
                         shinobi.indexrender.searchMenu(request);

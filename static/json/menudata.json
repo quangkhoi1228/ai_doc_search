@@ -1,5 +1,36 @@
 [
     {
+        "menucode": "HungDepTrai",
+        "menuname": "Hùng xấu trai",
+        "menuchildren": [
+            {
+                "menucode": "BanNuGiauTen",
+                "menuname": "Hương",
+                "menuchildren": [
+                    {
+                        "menucode": "BanNuGiauTen",
+                        "menuurl": "/index.html?idmenu=CacChienLuocThietKeCuaGiaiThuat",
+                        "menuname": "Hương1",
+                        "menuchildren": [],
+                        "contenturl": "/document/CauTrucDuLieuDong/DanhSachLienKet/KhaiNiemDanhSach.txt",
+                        "pdfurl": "/document/CauTrucDuLieuDong/DanhSachLienKet/Chuong-01-2018.pdf",
+                        "menuicon": "fal fa-chevron-double-right",
+                        "menudes": "Các chiến lược thiết kế của giải thuật",
+                        "menutags": "chiến lược thiết kế,tổng quan,dữ liệu,cấu trúc dữ liệu"
+                    }
+                ],
+                "contenturl": "/document/CauTrucDuLieuDong/DanhSachLienKet/KhaiNiemDanhSach.txt",
+                "pdfurl": "/document/CauTrucDuLieuDong/DanhSachLienKet/Chuong-01-2018.pdf",
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Các chiến lược thiết kế của giải thuật",
+                "menutags": "chiến lược thiết kế,tổng quan,dữ liệu,cấu trúc dữ liệu"
+            }
+        ],
+        "menuicon": "fab fa-penny-arcade",
+        "menudes": "Tìm kiếm và sắp xếp",
+        "menutags": "đẹp trai,xấu trai"
+    },
+    {
         "menucode": "TongQuanDLVaCTDL",
         "menuname": "Tổng quan DL và CTDL",
         "menuchildren": [
