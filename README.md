@@ -70,7 +70,7 @@ Tìm kiếm tài liệu phân tích và thiết kế thuật toán
 </pre>
 
 <ol>
-    <li>menucode: id của menu() là duy nhất trong menu data )</li>
+    <li>menucode: id của menu( là duy nhất trong menu data )</li>
     <li>menuname: tên hiển thị của menu( còn dùng cho search theo bài học )</li>
     <li>menuurl: link trang khi click vào menu
         <ul>
