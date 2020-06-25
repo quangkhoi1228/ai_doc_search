@@ -1,0 +1,158 @@
+﻿KHÁI NIỆM
+- Độ phức tạp của thuật toán là tốc độ tăng chi phí
+cho việc thực hiện thuật toán dựa trên tốc độ tăng
+số lượng giá trị đầu vào. Chi phi cho việc thực hiện
+thuật toán gồm 2 dạng: chi phí về thời gian và chi
+phí về không gian.
++ Chi phí về thời gian: Thời gian máy tính thực hiện
+thuật toán để đưa ra đáp án.
++ Chi phí về không gian: kích thước bộ nhớ để lưu
+trữ các dữ liệu sử dụng khi thực hiện thuật toán.
+- Độ phức tạp tính toán được ước lượng để so sánh
+giữa hai thuật toán cho một bài toán nhằm chọn lựa
+thuật toán hiệu quả hơn.
+- Giữa chi phí về thời gian và chi phí không gian có
+mối quan hệ tỉ lệ nghịch. Một thuật toán nếu giảm
+được chi phí về thời gian thì phải tăng chi phí về
+không gian, và ngược lại.
+- Độ phức tạp tính toán có thể được ước lượng theo
+ba trường hợp: trường hợp xấu nhất, trường hợp
+trung bình và trường hợp tốt nhất.
+
+PHÂN TÍCH TRƯỜNG HỢP TRUNG
+BÌNH
+Phân tích trường hợp trung bình được thực hiện
+theo trình tự sau:
+- Tính số phép toán được thực hiện trung bình.
+- Dùng các bậc đánh giá để ước lượng.
+
+Số phép toán trung bình được tính dựa vào giả thiết
+các trường hợp đều có xác suất như nhau và số
+phép toán trung bình chính là số phép toán kỳ vọng
+của các trường hợp.
+
+PHÉP TÍNH
+Phép tính là một công việc máy tính thực hiện có
+thời gian xác định và không phụ thuộc vào kích
+thước dữ liệu đầu vào của bài toán.
+
+SỰ PHÂN LỚP CÁC THUẬT TOÁN
+O(1) Độ phức tạp hằng số
+O(log(n)) Độ phức tạp logarit
+O(n) Độ phức tạp tuyến tính
+O(nlog(n)) Độ phức tạp nlogn
+O(n^k) Độ phức tạp đa thức
+O(k^n) Độ phức tạp hàm mũ
+O(n!) Độ phức tạp giai thừa
+
+TÍNH SỐ LƯỢNG PHÉP TÍNH
+Phương pháp tính số lượng phép tính phụ thuộc
+vào chiến lược đánh giá thuật toán. Có 3 chiến lược
+đánh giá thuật toán:
+– Đánh giá theo trường hợp tốt nhất
+– Đánh giá theo trường hợp xấu nhất.
+– Đánh giá theo trường hợp trung bình.
+Thông thường, với mục đích đánh giá chung, một
+thuật toán sẽ được đánh giá theo trường hợp xấu
+nhất. Mục đích là để xác định thuật toán có khả thi
+hay không. Việc đánh giá theo trường hợp xấu nhất
+có các đặc điểm sau:
+– Tính toán đơn giản.
+– Không ước lượng được sự hiệu quả.
+Cho n là kích thước dữ liệu đầu vào, số lượng phép
+tính của một thuật toán được tính theo các quy tắc
+sau:
+- Số phép tính cho một công việc là
+fA(n) = 1.
+- Số phép tính cho một công việc C gồm 2 công việc
+liên tiếp A và B là:
+fC(n) = fA(n) + fB(n)
+- Số phép tính cho một công việc C chứa hai công
+việc được lựa chọn A và B là:
+fc(n) = max(fB(n),fA(n));
+
+- Số phép tính cho một công việc đệ quy A bằng
+tổng số phép tính tại các bước gọi đệ quy.
+
+TÍNH SỐ LƯỢNG PHÉP TÍNH
+- 1 phép gán s = 0 → số lượng phép tính: 1
+- 1 phép gán i = 1 → số lượng phép tính: 1
+- liên tiếp n lần phép tính s = s + i
+→ số lượng phép tính: 1+..+1 = n
+- liên tiếp n lần phép kiểm tra i <= n:
+→ số lượng phép tính: n
+- liên tiếp n lần phép tăng i++:
+→ số lượng phép tính: n
+→ Số lượng phép tính của đoạn chương trình: 3n+2.
+
+CÁC BẬC ĐÁNH GIÁ THUẬT TOÁN
+Cho một thuật toán A thực hiện trên dữ liệu đầu vào
+có kích thước n. Chi phí về thời gian để thực hiện
+giải thuật này là f(n). Khi đó, độ phức tạp tính toán
+của thuật toán có thể được ước lượng theo các bậc
+như sau:
+* Bậc Big-O (Ô lớn)
+- Độ phức tạp của thuật toán A là O(g(n)) nếu tồn tại
+các hằng số c>0, n0
+>0 sao cho
+f(n) ≤ c.g(n)  n ≥ n0
+
+- Bậc Big-O thường được sử dụng trong đánh giá
+độ phức tạp tính toán của thuật toán để ước lượng
+độ phức tạp không thể cao hơn của thuật toán. Hàm
+g(n) được gọi là giới hạn trên của f(n).
+- Lưu ý: nếu độ phức tạp tính toán của thuật toán
+A là O(g(n)), thì độ phức tạp của thuật toán A cũng
+là O(h(n)) với h(n) là giới hạn trên của g(n)
+
+* Bậc Big-Omega (Ômêga lớn)
+- Độ phức tạp của thuật toán A là Omega(g(n)) nếu tồn tại
+các hằng số c>0, n0
+>0 sao cho
+f(n) ≥ c.g(n) Omega n ≥ n0
+
+- Bậc Big-Omega dùng để ước lượng độ phức tạp không
+thể thấp hơn của thuật toán. Hàm g(n) được gọi là
+giới hạn dưới của f(n).
+- Lưu ý: nếu độ phức tạp tính toán của thuật toán
+A là Omega(g(n)), thì độ phức tạp của thuật toán A cũng
+là Omega(h(n)) với h(n) là giới hạn dưới của g(n).
+
+* Bậc Big-Teta (Têta lớn)
+- Độ phức tạp của thuật toán A là Teta(g(n)) nếu tồn tại
+các hằng số c0>0, c1>0, n0>0 sao cho
+c0.g(n) ≤ f(n) ≤ c1.g(n) với mọi n ≥ n0
+
+- Bậc Big-Teta dùng để ước lượng độ phức tạp tương
+đương của thuật toán. Hàm g(n) được gọi là giới
+hạn chặt của f(n).
+
+* Một số tính chất
+- Nếu thuật toán A có số phép tính dựa trên kích thước
+đầu vào n là một đa thức P(n) bậc k, khi đó, độ phức tạp
+tính toán của A là có thể là O(nk), Omega(nk), Teta(nk).
+- Nếu thuật toán A có số phép tính dựa trên kích thước
+đầu vào n là logaf(n),do logaf(n)=logab.logbf(n)
+nên độ phức tạp tính toán của A có thể ghi là O(log f(n))
+mà không cần ghi cơ số. Điều này cũng đúng với bậc
+Omega và Teta.
+
+* Một số tính chất
+- Nếu thuật toán A có hai công việc liên tiếp nhau
+T1 và T2 lần lượt có độ phức tạp là O(f(n)) và
+O(g(n)) thì độ phức tạp của A: O(max(f(n),g(n))).
+- Nếu thuật toán A có hai công việc T1 lồng T2, T1
+và T2 lần lượt có độ phức tạp là O(f(n)) và O(g(n))
+thì độ phức tạp của A: O(f(n).g(n)).
+
+* Nhận xét:
+- Trong các ký pháp để đánh giá thuật toán, Bậc
+Big-Teta thể hiện độ phức tạp tính toán tốt nhất
+- Trong những trường hợp không thể xác định
+được giới hạn chặt của hàm số biễu diễn số lượng
+phép tính của thuật toán, người ta thường dùng bậc
+Big-O để thể hiện độ phức tạp tính toán.
+- Khi đánh giá thuật toán, người ta sử dụng hàm
+giới hạn g(n) đơn giản và sát với f(n) nhất có thể
+
+

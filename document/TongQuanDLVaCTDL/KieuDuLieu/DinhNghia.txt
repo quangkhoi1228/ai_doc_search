@@ -1,4 +1,0 @@
-﻿ĐỊNH NGHĨA
-Kiểu dữ liệu T là một bộ <V, O> trong đó V là miền
-giá trị và O là tập các phép toán được định nghĩa
-trên V

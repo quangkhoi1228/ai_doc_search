@@ -1,87 +1,5 @@
 [
     {
-        "menucode": "Nga xinh gái",
-        "menuname": "Nga xinh gái",
-        "menuchildren": [
-            {
-                "menucode": "Nga xinh gái1 com1",
-                "menuname": "Nga xinh gái1 com1",
-                "menuchildren": [
-                    {
-                        "menucode": "Nga xinh gái",
-                        "menuname": "Nga xinh gái",
-                        "menuchildren": [
-                            {
-                                "menucode": "Nga xinh gái1 com1",
-                                "menuname": "Nga xinh gái1 com1",
-                                "menuchildren": [],
-                                "menuicon": "fab fa-penny-info",
-                                "menudes": "Nga thông tin1",
-                                "menutags": "xinh gái,xinh trai1"
-                            },
-                            {
-                                "menucode": "Nga xinh gái1 con2",
-                                "menuname": "Nga xinh gái1 con2",
-                                "menuchildren": [],
-                                "menuicon": "fab fa-penny-info",
-                                "menudes": "Nga thông tin1",
-                                "menutags": "xinh gái,xinh trai2"
-                            }
-                        ],
-                        "menuicon": "fab fa-penny-info",
-                        "menudes": "Nga thông tin",
-                        "menutags": "xinh gái,xinh trai"
-                    }
-                ],
-                "menuicon": "fab fa-penny-info",
-                "menudes": "Nga thông tin1",
-                "menutags": "xinh gái,xinh trai1"
-            },
-            {
-                "menucode": "Nga xinh gái1 con2",
-                "menuname": "Nga xinh gái1 con2",
-                "menuchildren": [],
-                "menuicon": "fab fa-penny-info",
-                "menudes": "Nga thông tin1",
-                "menutags": "xinh gái,xinh trai2"
-            }
-        ],
-        "menuicon": "fab fa-penny-info",
-        "menudes": "Nga thông tin",
-        "menutags": "xinh gái,xinh trai"
-    },
-    {
-        "menucode": "HungDepTrai",
-        "menuname": "Hùng xấu trai",
-        "menuchildren": [
-            {
-                "menucode": "BanNuGiauTen",
-                "menuname": "Hương",
-                "menuchildren": [
-                    {
-                        "menucode": "BanNuGiauTen",
-                        "menuurl": "/index.html?idmenu=CacChienLuocThietKeCuaGiaiThuat",
-                        "menuname": "Hương1",
-                        "menuchildren": [],
-                        "contenturl": "/document/CauTrucDuLieuDong/DanhSachLienKet/KhaiNiemDanhSach.txt",
-                        "pdfurl": "/document/CauTrucDuLieuDong/DanhSachLienKet/Chuong-01-2018.pdf",
-                        "menuicon": "fal fa-chevron-double-right",
-                        "menudes": "Các chiến lược thiết kế của giải thuật",
-                        "menutags": "chiến lược thiết kế,tổng quan,dữ liệu,cấu trúc dữ liệu"
-                    }
-                ],
-                "contenturl": "/document/CauTrucDuLieuDong/DanhSachLienKet/KhaiNiemDanhSach.txt",
-                "pdfurl": "/document/CauTrucDuLieuDong/DanhSachLienKet/Chuong-01-2018.pdf",
-                "menuicon": "fal fa-chevron-double-right",
-                "menudes": "Các chiến lược thiết kế của giải thuật",
-                "menutags": "chiến lược thiết kế,tổng quan,dữ liệu,cấu trúc dữ liệu"
-            }
-        ],
-        "menuicon": "fab fa-penny-arcade",
-        "menudes": "Tìm kiếm và sắp xếp",
-        "menutags": "đẹp trai,xấu trai"
-    },
-    {
         "menucode": "TongQuanDLVaCTDL",
         "menuname": "Tổng quan DL và CTDL",
         "menuchildren": [
@@ -90,8 +8,8 @@
                 "menuurl": "/index.html?idmenu=CacChienLuocThietKeCuaGiaiThuat",
                 "menuname": "Các chiến lược thiết kế của giải thuật",
                 "menuchildren": [],
-                "contenturl": "/document/CauTrucDuLieuDong/DanhSachLienKet/KhaiNiemDanhSach.txt",
-                "pdfurl": "/document/CauTrucDuLieuDong/DanhSachLienKet/Chuong-01-2018.pdf",
+                "contenturl": "/document/TongQuanDLVaCTDL/CacChienLuocThietKeCuaGiaiThuat/Cacchienluocthietkegiaithuat.txt",
+                "pdfurl": "/document/TongQuanDLVaCTDL/CacChienLuocThietKeCuaGiaiThuat/Cacchienluocthietkegiaithuat.pdf",
                 "menuicon": "fal fa-chevron-double-right",
                 "menudes": "Các chiến lược thiết kế của giải thuật",
                 "menutags": "chiến lược thiết kế,tổng quan,dữ liệu,cấu trúc dữ liệu"
@@ -100,46 +18,76 @@
                 "menucode": "CauTrucDuLieu",
                 "menuurl": "/index.html?idmenu=CauTrucDuLieu",
                 "menuname": "Cấu trúc dữ liệu",
-                "contenturl": "/document/CauTrucDuLieuDong/DanhSachLienKet/KhaiNiemDanhSach.txt",
-                "pdfurl": "/document/CauTrucDuLieuDong/DanhSachLienKet/Chuong-05.pdf",
+                "contenturl": "/document/TongQuanDLVaCTDL/CauTrucDuLieu/Cautrucdulieu.txt",
+                "pdfurl": "/document/TongQuanDLVaCTDL/CauTrucDuLieu/Cautrucdulieu.pdf",
                 "menuchildren": [],
                 "menuicon": "fal fa-chevron-double-right",
                 "menudes": "Cấu trúc dữ liệu",
                 "menutags": "cấu trúc dữ liệu"
             },
             {
-                "menucode": "3_3",
-                "menuurl": "/index.html?idmenu=intro2",
+                "menucode": "DoPhucTapCuaGiaiThuat",
+                "menuurl": "/index.html?idmenu=DoPhucTapCuaGiaiThuat",
                 "menuname": "Độ phức tạp của giải thuật",
+                "contenturl": "/document/TongQuanDLVaCTDL/DoPhucTapCuaGiaiThuat/Dophuctapcuagiaithuat.txt",
+                "pdfurl": "/document/TongQuanDLVaCTDL/DoPhucTapCuaGiaiThuat/Dophuctapcuagiaithuat.pdf",
                 "menuchildren": [],
                 "menuicon": "fal fa-chevron-double-right",
                 "menudes": "Độ phức tạp của giải thuật",
-                "menutags": "độ phức tạp"
+                "menutags": "Độ phức tạp của giải thuật,độ phức tạp,giải thuật"
+            },
+            {
+                "menucode": "GiaiThuat",
+                "menuurl": "/index.html?idmenu=GiaiThuat",
+                "menuname": "Giải thuật",
+                "contenturl": "/document/TongQuanDLVaCTDL/GiaiThuat/Giaithuat.txt",
+                "pdfurl": "/document/TongQuanDLVaCTDL/GiaiThuat/Giaithuat.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Giải thuật",
+                "menutags": "giải thuật"
+            },
+            {
+                "menucode": "KieuDuLieu",
+                "menuurl": "/index.html?idmenu=KieuDuLieu",
+                "menuname": "Kiểu dữ liệu",
+                "contenturl": "/document/TongQuanDLVaCTDL/KieuDuLieu/Kieudulieu.txt",
+                "pdfurl": "/document/TongQuanDLVaCTDL/KieuDuLieu/Kieudulieu.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Kiểu dữ liệu",
+                "menutags": "kiểu dữ liệu"
             }
         ],
         "menuicon": "fal fa-chevron-right",
         "menudes": "Toàn vẹn và xác thực",
-        "menutags": "tổng quan,thiết kế,cấu trúc,độ phức tạp"
+        "menutags": "tổng quan,thiết kế,cấu trúc,độ phức tạp,kiểu dữ liệu,giải thuật"
     },
     {
         "menucode": "TimKiemVaSapXep",
         "menuname": "Tìm kiếm và sắp xếp",
         "menuchildren": [
             {
-                "menucode": "4_1",
-                "menuurl": "/page/guide/communitystandards/astraders",
-                "menuname": "Giải thuật sắp xếp",
-                "menuicon": "fal fa-chevron-double-right",
-                "menudes": "Giải thuật sắp xếp",
-                "menuchildren": []
-            },
-            {
-                "menucode": "4_2",
-                "menuurl": "/page/guide/communitystandards/astraders",
-                "menuname": "Giải thuật tìm kiếm",
+                "menucode": "TimKiem",
+                "menuurl": "/index.html?idmenu=TimKiem",
+                "menuname": "Tìm kiếm",
+                "contenturl": "/document/TimKiemVaSapXep/TimKiem/Giaithuattimkiem.txt",
+                "pdfurl": "/document/TimKiemVaSapXep/TimKiem/Giaithuattimkiem.pdf",
                 "menuchildren": [],
                 "menuicon": "fal fa-chevron-double-right",
-                "menudes": "Giải thuật tìm kiếm"
+                "menudes": "Tìm kiếm",
+                "menutags": "tìm kiếm"
+            },
+            {
+                "menucode": "SapXep",
+                "menuurl": "/index.html?idmenu=SapXep",
+                "menuname": "Sắp xếp",
+                "contenturl": "/document/TimKiemVaSapXep/SapXep/Giaithuatsapxep.txt",
+                "pdfurl": "/document/TimKiemVaSapXep/SapXep/Giaithuatsapxep.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Sắp xếp",
+                "menutags": "sắp xếp"
             }
         ],
         "menuicon": "fal fa-chevron-right",
@@ -151,41 +99,158 @@
         "menuname": "Cấu trúc dữ liệu động",
         "menuchildren": [
             {
-                "menucode": "4_1",
+                "menucode": "DanhSachLienKet",
+                "menuurl": "/index.html?idmenu=DanhSachLienKet",
                 "menuname": "Danh sách liên kết",
-                "menuicon": "fal fa-chevron-double-right",
-                "menudes": "Danh sách liên kết",
-                "menuchildren": [
-                    {
-                        "menucode": "KhaiNiemDanhSach",
-                        "menuurl": "/index.html?idmenu=KhaiNiemDanhSach",
-                        "menuname": "Khái niệm danh sách",
-                        "contenturl": "/document/CauTrucDuLieuDong/DanhSachLienKet/PhanLoaiDanhSach.txt",
-                        "pdfurl": "/document/CauTrucDuLieuDong/DanhSachLienKet/Chuong-01-2018.pdf",
-                        "menuchildren": [],
-                        "menuicon": "fal fa-quote-right",
-                        "menudes": "Phân loại danh sách"
-                    },
-                    {
-                        "menucode": "4_2",
-                        "menuurl": "/page/guide/communitystandards/astraders",
-                        "menuname": "Phân loại danh sách",
-                        "menuchildren": [],
-                        "menuicon": "fal fa-quote-right",
-                        "menudes": "Giải thuật tìm kiếm"
-                    }
-                ]
-            },
-            {
-                "menucode": "4_2",
-                "menuurl": "/page/guide/communitystandards/astraders",
-                "menuname": "Danh sách liên kết đơn",
+                "contenturl": "/document/CauTrucDuLieuDong/DanhSachLienKet/Danhsachlienket.txt",
+                "pdfurl": "/document/CauTrucDuLieuDong/DanhSachLienKet/Danhsachlienket.pdf",
                 "menuchildren": [],
                 "menuicon": "fal fa-chevron-double-right",
-                "menudes": "Danh sách liên kết đơn"
+                "menudes": "Danh sách liên kết",
+                "menutags": "danh sách liên kết"
+            },
+            {
+                "menucode": "DanhSachLienKetDon",
+                "menuurl": "/index.html?idmenu=DanhSachLienKetDon",
+                "menuname": "Danh sách liên kết đơn",
+                "contenturl": "/document/CauTrucDuLieuDong/DanhSachLienKetDon/Danhsachlienketdon.txt",
+                "pdfurl": "/document/CauTrucDuLieuDong/DanhSachLienKetDon/Danhsachlienketdon.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Danh sách liên kết đơn",
+                "menutags": "danh sách liên kết đơn"
+            },
+            {
+                "menucode": "DatVanDe",
+                "menuurl": "/index.html?idmenu=DatVanDe",
+                "menuname": "Đặt vấn đề",
+                "contenturl": "/document/CauTrucDuLieuDong/DatVanDe/Datvande.txt",
+                "pdfurl": "/document/CauTrucDuLieuDong/DatVanDe/Datvande.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Đặt vấn đề",
+                "menutags": "đặt vấn đề"
+            },
+            {
+                "menucode": "KieuDuLieuConTro",
+                "menuurl": "/index.html?idmenu=KieuDuLieuConTro",
+                "menuname": "Kiểu dữ liệu con trỏ",
+                "contenturl": "/document/CauTrucDuLieuDong/KieuDuLieuConTro/Kieudulieucontro.txt",
+                "pdfurl": "/document/CauTrucDuLieuDong/KieuDuLieuConTro/Kieudulieucontro.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Kiểu dữ liệu con trỏ",
+                "menutags": "kiểu dữ liệu con trỏ"
+            },
+            {
+                "menucode": "MotSoDangDanhSachLienKetKhac",
+                "menuurl": "/index.html?idmenu=MotSoDangDanhSachLienKetKhac",
+                "menuname": "Một số dạng liên kết khác",
+                "contenturl": "/document/CauTrucDuLieuDong/MotSoDangDanhSachLienKetKhac/Motsodangdanhsachlienketkhac.txt",
+                "pdfurl": "/document/CauTrucDuLieuDong/MotSoDangDanhSachLienKetKhac/Motsodangdanhsachlienketkhac.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Một số dạng liên kết khác",
+                "menutags": "một số dạng liên kết khác"
             }
         ],
         "menuicon": "fal fa-chevron-right",
-        "menudes": "Cấu trúc dữ liệu động"
+        "menudes": "Cấu trúc dữ liệu động",
+        "menutags": "danh sách liên kết,danh sách liên kết đơn,kiểu dữ liệu con trỏ,danh sách liên kết khác"
+    },
+    {
+        "menucode": "CauTrucCay",
+        "menuname": "Cấu trúc cây",
+        "menuchildren": [
+            {
+                "menucode": "CayNhiPhan",
+                "menuurl": "/index.html?idmenu=CayNhiPhan",
+                "menuname": "Cây nhị phân",
+                "contenturl": "/document/CauTrucCay/CayNhiPhan/Caynhiphan.txt",
+                "pdfurl": "/document/CauTrucCay/CayNhiPhan/Caynhiphan.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Cây nhị phân",
+                "menutags": "cây nhị phân"
+            },
+            {
+                "menucode": "CayNhiPhanCanBang",
+                "menuurl": "/index.html?idmenu=CayNhiPhanCanBang",
+                "menuname": "Cây nhị phân cân bằng",
+                "contenturl": "/document/CauTrucCay/CayNhiPhanCanBang/Caynhiphancanbang.txt",
+                "pdfurl": "/document/CauTrucCay/CayNhiPhanCanBang/Caynhiphancanbang.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Cây nhị phân cân bằng",
+                "menutags": "cây nhị phân cân bằng"
+            },
+            {
+                "menucode": "CayNhiPhanTimKiem",
+                "menuurl": "/index.html?idmenu=CayNhiPhanTimKiem",
+                "menuname": "Cây nhị phân tìm kiếm",
+                "contenturl": "/document/CauTrucCay/CayNhiPhanTimKiem/Caynhiphantimkiem.txt",
+                "pdfurl": "/document/CauTrucCay/CayNhiPhanTimKiem/Caynhiphantimkiem.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Cây nhị phân tìm kiếm",
+                "menutags": "cây nhị phân tìm kiếm"
+            },
+            {
+                "menucode": "GioiThieu",
+                "menuurl": "/index.html?idmenu=GioiThieu",
+                "menuname": "Giới thiệu",
+                "contenturl": "/document/CauTrucCay/GioiThieu/Gioithieu.txt",
+                "pdfurl": "/document/CauTrucCay/GioiThieu/Gioithieu.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Giới thiệu",
+                "menutags": "giới thiệu"
+            }
+        ],
+        "menuicon": "fal fa-chevron-right",
+        "menudes": "Cấu trúc cây",
+        "menutags": "cây nhị phân,cây nhị phân cân bằng,cây nhị phân tìm kiếm,cân bằng,tìm kiếm"
+    },
+    {
+        "menucode": "BangBam",
+        "menuname": "Bảng băm",
+        "menuchildren": [
+            {
+                "menucode": "CacKhaiNiem",
+                "menuurl": "/index.html?idmenu=CacKhaiNiem",
+                "menuname": "Các khái niệm",
+                "contenturl": "/document/BangBam/CacKhaiNiem/Cackhainiem.txt",
+                "pdfurl": "/document/BangBam/CacKhaiNiem/Cackhainiem.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Các khái niệm",
+                "menutags": "các khái niệm"
+            },
+            {
+                "menucode": "PhuongPhapDiaChiMo",
+                "menuurl": "/index.html?idmenu=PhuongPhapDiaChiMo",
+                "menuname": "Phương pháp địa chỉ mờ",
+                "contenturl": "/document/BangBam/PhuongPhapDiaChiMo/Phuongphapdiachimo.txt",
+                "pdfurl": "/document/BangBam/PhuongPhapDiaChiMo/Phuongphapdiachimo.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Phương pháp địa chỉ mờ",
+                "menutags": "phương pháp địa chỉ mờ"
+            },
+            {
+                "menucode": "PhuongPhapNoiKet",
+                "menuurl": "/index.html?idmenu=PhuongPhapNoiKet",
+                "menuname": "Phương pháp nối kết",
+                "contenturl": "/document/BangBam/PhuongPhapNoiKet/Phuongphapnoiket.txt",
+                "pdfurl": "/document/BangBam/PhuongPhapNoiKet/Phuongphapnoiket.pdf",
+                "menuchildren": [],
+                "menuicon": "fal fa-chevron-double-right",
+                "menudes": "Phương pháp nối kết",
+                "menutags": "phương pháp nối kết"
+            }
+        ],
+        "menuicon": "fal fa-chevron-right",
+        "menudes": "Bảng băm",
+        "menutags": "bảng băm,địa chỉ mờ,nối kết,khái niệm"
     }
 ]

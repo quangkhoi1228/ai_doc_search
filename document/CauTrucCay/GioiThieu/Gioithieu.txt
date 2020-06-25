@@ -1,0 +1,61 @@
+ĐỊNH NGHĨA CÂY
+Cây là một tập hợp các phần tử, gọi là node, liên kết với nhau bằng các cạnh có hướng. Trong đó:
+	- Có một node đặc biệt được gọi là gốc (root)
+	- Hướng của cạnh đi từ node A đến node B biểu diễn quan hệ A là cha (parent) của B hay B là con (child) của A.
+	- Các node có cùng node cha được gọi là các node anh em (sibling)
+	- Ngoài node gốc, cây có thể có nhiều node con khác. Mỗi node con là một cây con (subtree).
+
+MỘT SỐ KHÁI NIỆM
+- Bậc của một nút: là số cây con của nút đó.
+ Ví dụ: Bậc của B là 4, bậc của G là 0.
+	- Bậc của một cây: là bậc lớn nhất của các node trong cây
+	- Node gốc: là node không có node cha
+	- Node lá: là node không có node con, hay có bậc bằng 0.
+ Ví dụ: node G, node I.
+	- Node trung gian (node trong): là node không phải node lá.
+-Mức của một node:
+	▪ Mức của node gốc là 1
+	▪ Giả sử node X có mức là i, nếu Y là con của X thì mức của Y là i+1.
+- Độ dài đường đi từ gốc đến node X: là số cạnh cần đi từ gốc đến X.
+- Nếu có đường đi từ X đến Y thì X được gọi là tiền bối (ancestor) của Y hay Y là hậu duệ (descendant) của X
+
+- Chiều cao của node X (hX) là số node trên đường đi dài nhất từ X đến các node lá của nó.
+- Chiều cao của cây (h) là chiều cao của node gốc.
+- Độ sâu của một node X (dX) là độ dài đường đi từ node gốc đến X cộng thêm 1
+
+BIỂU DIỄN CÂY
+Dùng mảng (danh sách đặc):
+	- Đánh số thứ tự các node trên cây.
+	- Nếu node thứ i là cha của node thứ j thì giá trị của phần tử thứ j trong mảng sẽ bằng i.
+	- Nếu node thứ i là node gốc, giá trị của phần tử thứ i trong mảng sẽ bằng -1.
+
+Dùng mảng (danh sách đặc)
+Dùng danh sách liên kết
+- Mỗi node sẽ có một danh sách chứa địa chỉ của các node con của nó.
+
+DUYỆT CÂY THEO THỨ TỰ
+
+Duyệt theo thứ tự trước (pre-order):
+Giả sử node gốc R có n node con T1,.., Tn, thực hiện:
+	- Xử lý node gốc R
+	- Duyệt theo thứ tự trước cho node T1
+	- Duyệt theo thứ tự trước cho node T2
+	- …
+- Duyệt theo thứ tự trước cho node Tn
+
+
+Duyệt theo thứ tự sau (post-order):
+Giả sử node gốc R có n node con T1,.., Tn, thực hiện:
+	- Duyệt theo thứ tự sau cho node T1
+	- Duyệt theo thứ tự sau cho node T2
+	- …
+	- Duyệt theo thứ tự sau cho node Tn
+	- Xử lý node gốc R
+
+Duyệt theo thứ tự giữa (in-order):
+Giả sử node gốc R có n node con T1,.., Tn, thực hiện:
+	- Duyệt theo thứ tự giữa cho node T1
+	- Xử lý node gốc R
+	- Duyệt theo thứ tự giữa cho node T2
+	- …
+	- Duyệt theo thứ tự giữa cho node Tn

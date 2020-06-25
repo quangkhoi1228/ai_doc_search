@@ -1,0 +1,47 @@
+﻿KHÁI NIỆM 
+Thuật toán (giải thuật) là tập hợp các thao tác có thứ tự sao cho khi thực hiện một số tao tác hữu hạn đó thì đạt được mục tiêu.
+
+BIỂU DIỄN GIẢI THUẬT
+- Dùng ngôn ngữ tự nhiên
+- Dùng lưu đồ
+- Dùng mã giả (sử dụng một số cú pháp của một
+ngôn ngữ lập trình nào đó, chẳng hạn C/C++).
+
+
+DÙNG NGÔN NGỮ TỰ NHIÊN:
+Đầu vào: dãy số A, kích thước dãy n.
+Đầu ra: số nhỏ nhất Min của dãy A.
+B1: Đặt j ← 1, Min ← A0
+.
+B2: Nếu j < n qua bước B3, ngược lại qua bước 5
+B3: Nếu Aj < Min thì Min ← Aj
+.
+B4: Đặt j ← j + 1, đến bước B2.
+B5: Kết thúc.
+
+DÙNG LƯU ĐỒ:
+Đầu vào: dãy số A, kích thước dãy n.
+Đầu ra: số nhỏ nhất Min của dãy A.
+
+
+DÙNG MÃ GIẢ (pseudo-code):
+Đầu vào: dãy số A, kích thước dãy n.
+Đầu ra: số nhỏ nhất Min của dãy A.
+
+j ← 1, Min ← A[0]
+while j < n
+if A[j] < Min then
+Min ← A[j]
+j ← j + 1
+
+QUAN HỆ GIỮA GIẢI THUẬT VÀ CTDL
+- Dữ liệu là đối tượng xử lý của giải thuật
+- Giải thuật được xây dựng phụ thuộc vào CTDL
+- CTDL được định nghĩa tốt sẽ giúp xây dựng giải thuật tốt.
+
+CÁC ĐẶC TRƯNG 
+- Tính đúng đắn 
+- Tính hữu hạn (dừng) 
+- Tính xác định 
+- Tính khả thi (hiệu quả) 
+- Tính phổ dụng (phổ quát)

@@ -1,0 +1,13 @@
+﻿KHÁI NIỆM
+- Là cách tổ chức lưu trữ dữ liệu trong máy tính để
+mô hình hóa các điều kiện của bài toán, từ đó có thể
+sử dụng dữ liệu một cách hiệu quả.
+- Cấu trúc dữ liệu có vai trò rất quan trọng trong việc
+giải quyết vấn đề bằng máy tính.
+
+TIÊU CHUẨN ĐÁNH GIÁ
+- Phản ánh đúng thực tế
+- Phù hợp với thao tác tìm kiếm, truy xuất, cập nhật,
+them hoặc xóa.
+- Tiết kiệm tài nguyên hệ thống.
+- Đơn giản và dễ hiểu.

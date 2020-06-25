@@ -1,0 +1,277 @@
+TỔ CHỨC
+- Mỗi phần tử chứa liên kết đến phần tử đứng liền trước và sau nó 
+- Mỗi phần tử là một cấu trúc gồm 3 thành phần: 
+	+ Thành phần dữ liệu: chứa thông tin cần quản lý 
+	+ Hai thành phần liên kết: chứa địa chỉ của phần tử liền trước và sau nó, hoặc chứa giá trị NULL.
+struct TenDulieu { 
+	... // Thông tin cần quản lý }; 
+	struct Node { 
+		TenDulieu info; Node * pNext, * pPrev; }; 
+	struct TenDS { Node *pHead, *pTail; };
+CÁC THAO TÁC CƠ BẢN 
+- Tạo danh sách rỗng 	
+	void CreateList(TenDS &p) { p.pHead = NULL; p.pTail = NULL; } 
+- Tạo một nút có trường info bằng x 
+	Node* CreateNode(TenDuLieu x) { 
+		Node *p = new Node; // cấp phát vùng nhớ 
+		if (p != NULL) { // kiểm tra kết quả cấp phát 
+			p->info = x; p->pPrev = NULL; p->pNext = NULL; } 
+		return p; }
+
+- Thêm phần tử vào danh sách 
+	+ Thêm vào đầu danh sách 
+		void AddFirst(TenDS &l, Node *p) { 
+			if (l.pHead == NULL) { 
+				l.pHead = p; l.pTail = p; } 
+			else { p->pNext = l.pHead; l.pHead->pPrev=p; l.pHead = p; } 
+		}
+	+ Thêm vào cuối danh sách 
+		void AddLast(TenDS &l, Node *p) { 
+			if (l.pHead == NULL) { 
+				l.pHead = p; l.pTail = p; } 
+			else { l.pTail->pNext = p; p->pPrev = l.pTail; l.pTail = p; } 
+		}
+	+ Thêm vào sau phần tử q trong danh sách 
+		void AddAfter(TenDS &l, Node *p, Node *q) { 
+			if (q != NULL) { 
+				p->pNext = q->pNext; 
+				if (q->pNext != NULL) q->pNext->pPrev = p; q->pNext = p; p->pPrev = q; 
+				if (l.pTail == q) l.pTail = p; } 
+			else AddFirst(l, p); 
+		}
+	+  Thêm vào trước phần tử q trong danh sách 
+		void AddBefore(TenDS &l, Node *p, Node *q) { 
+			if (q != NULL) { p->pPrev = q->pPrev; 
+				if (q->pPrev != NULL) q->pPrev->pNext = p; 
+				q->pPrev = p; p->pNext = q;
+				if (l.pHead == q) l.pHead = p; } 
+			else AddLast(l, p); 
+		}
+
+- Duyệt danh sách 
+B1) p <- l.pHead 
+B2) Nếu p = NULL qua B4 
+B3) Xử lý cho phần tử p, p <- p->pNext, qua B2. 
+B4) Kết thúc
+	+  Tìm phần tử có trường info bằng x 
+		int Equal(TenDuLieu x, TenDuLieu y); // hàm so sánh 
+		Node * Search(TenDS l, TenDuLieu x) { 
+			Node *p = l.pHead; 
+			while ((p != NULL) && (!Equal(p->info, x)) 
+				p = p->pNext; return p; 
+		}
+- Hủy phần tử trong danh sách 
+	+  Hủy phần tử đầu danh sách 
+		int RemoveFirst(TenDS &l, TenDulieu &x) { 
+			Node *p = l.pHead; int r = 0; 
+			if (l.pHead != NULL) {
+				 x = p->info; l.pHead = p->pNext; delete p; r = 1; if (l.pHead == NULL) l.pTail = NULL; else l.pHead->pPrev = NULL; }
+			 return r; 
+		}
+	+  Hủy phần tử cuối danh sách 
+		int RemoveLast(TenDS &l, TenDulieu &x) { 
+			Node *p = l.pTail; int r = 0; 
+			if (l.pTail != NULL) { x = p->info; l.pTail = p->pPrev; delete p; r = 1; if (l.pTail == NULL) l.pHead = NULL; else l.pTail->pNext = NULL; } 
+			return r; 
+		}
+	+  Hủy phần tử ngay sau phần tử q trong danh sách 
+		int RemoveAfter(TenDS &l, Node *q, TenDulieu &x) {
+			Node *p; 
+			if (q != NULL) { p = q->pNext; 
+				if (p != NULL) { q->pNext = p->pNext; if (p==l.pTail) l.pTail=q; else p->pNext->pPrev=q; x = p->info; delete p; } 
+			return 1;} 
+			else return RemoveFirst(l, x); 
+		}
+	+  Hủy phần tử ngay trước phần tử q trong danh sách 
+		int RemoveBefore(TenDS &l, Node *q, TenDulieu &x) { 
+			Node *p; 
+			if (q != NULL) { p = q->pPrev; 
+				if (p != NULL) { q->pPrev = p->pPrev; if(p==l.pHead) l.pHead=q; else p->pPrev->pNext=q; x = p->info; delete p; } 
+				return 1;} 
+			return RemoveLast(l, x);
+		}
+	+  Hủy phần tử có khóa x 
+		int Remove(TenDS &l, TenDulieu &x) { 
+			Node *p = l.pHead, *q = NULL; int r = 0; 
+			while ((p != NULL) && (!Equal(p->info, x))) { q = p; p = p->pNext; } if (p != NULL) 
+				if (q == NULL) r = RemoveFirst(l,x); 
+				else r = RemoveAfter(l, q, x); 
+			return r; 
+		}
+
+- Hủy danh sách 
+void RemoveList(TenDS &l) { 
+	Node *p; while (l.pHead != NULL)  { 
+		p = l.pHead; l.pHead = p->pNext; delete p; } 
+	l.pTail = NULL;
+}
+
+- Sắp xếp danh sách 
+Danh sách có thể được sắp xếp theo hai cách 
+	+ Hoán đổi thành phần info của các phần tử trong danh sách 
+	+ Thiết lập lại liên kết giữa các phần tử trong danh sách
+
+DANH SÁCH LIÊN KẾT CÓ THỨ TỰ 
+Danh sách liên kết có thứ tự (Ordered List) là danh sách mà các phần tử của nó phải đảm bảo một thứ tự nào đó. Vì vậy, việc thêm phần tử cần phải xét đến thứ tự của danh sách. Đối với danh sách liên kết có thứ tự được cài đặt theo danh sách đơn, có hai thao tác cần được hiệu chỉnh là: 
+- Thêm phần tử vào danh sách 
+	int Compare(TenDulieu x, TenDulieu y); // trả về -1 nếu x < y, 0 nếu x = y, 1 nếu x > y 
+	void Add(TenDS &l, Node *p) { 	
+		Node *q = NULL, *h = l.pHead; while (h) { 
+			if (Compare(h->info, p->info) >= 0) break; 
+		q = h; h = h->pNext; } 
+	AddAfter(l, q, p); 
+	}
+- Tìm kiếm phần tử trong danh sách
+	Node * Search(TenDS &l, TenDulieu x) { 
+		Node *p = l.pHead; while (p) { 
+			if (Compare(p->info, x) == 0) break;
+			else if (Compare(p->info, x) > 0) {p = NULL; break;}
+			p = p->pNext; } return p; }
+
+QUEUE
+- Là cấu trúc dữ liệu cho phép lưu các phần tử chứa dữ liệu khác. 
+- Phần tử chứa dữ liệu được quản lý theo nguyên tắc FIFO (First In First Out) trong đó phần tử được đưa vào hàng đợi trước sẽ được lấy ra trước
+Hàng đợi có các thao tác đặc trưng sau: 
+- EnQueue: thêm phần tử vào hàng đợi 
+- DeQueue: lấy phần tử ra khỏi hàng đợi 
+- IsEmpty: kiểm tra hàng đợi có rỗng không 
+- Front: lấy dữ liệu của phần tử đầu hàng đợi mà không hủy nó. 
+Hàng đợi được cài đặt theo: 
+- Mảng 
+	+ Khai báo kiểu dữ liệu 
+		#define MAX 100 
+		struct TenDulieu { // Dữ liệu cần quản lý }; 
+		struct Queue { TenDulieu data[MAX]; int Front, Rear; };
+	+ Tạo hàng đợi rỗng 
+		void CreateQueue(Queue &q) { 
+			q.Front = -1; q.Rear = -1; } 
+	+ Kiểm tra hàng đợi có rỗng hay không 
+		int IsEmpty(Queue &q) { 
+			return q.Front == -1; }
+	+ Thêm phần tử vào hàng đợi 
+		int EnQueue(Queue &q, TenDulieu x) { 
+			if ((q.Front == q.Rear+1) || (q.Rear-q.Front+1 == MAX)) return 0; // hàng đợi đã đầy 
+			if (q.Front == -1) q.Front = 0; 
+			q.Rear++; 
+			if (q.Rear == MAX) q.Rear = 0; 
+			q.data[q.Rear] = x; 
+			return 1; }
+	+ Lấy phần tử ra khỏi hàng đợi 
+		int DeQueue(Queue &q, TenDulieu &x) { 
+		if (IsEmpty(q)) return 0; 
+		x = q.data[q.Front]; 
+		if (q.Front == q.Rear) { q.Front = -1; q.Rear = -1; } 
+		else { q.Front++; 	
+			if (q.Front >= MAX) q.Front = 0; } 
+		return 1; }
+
+- Danh sách đơn
+	+ Khai báo cấu trúc dữ liệu 
+		struct TenDulieu { // Dữ liệu quản lý }; 
+		struct Node { TenDulieu info; Node *pNext; };
+	+  Khai báo cấu trúc dữ liệu 	
+		struct Queue { Node *pHead, *pTail; }; 
+	+ Tạo hàng đợi rỗng 	
+		void CreateQueue(Queue &q) { q.pHead = NULL; q.pTail = NULL; }
+	+  Kiểm tra hàng đợi có rỗng hay không 
+		int IsEmpty(Queue &q) { return q.pHead == NULL; }
+	+ Thêm một phần tử vào hàng đợi 
+		void EnQueue(Queue &q, Node *p) { 
+			if (q.pHead == NULL) { q.pHead = p; q.pTail = p; } 
+			else { q.pTail->pNext = p; q.pTail = p; } }
+	+  Lấy một phần tử ra khỏi hàng đợi 
+		int DeQueue(Queue &q, TenDulieu &x) {
+			Node *p; if (q.pHead == NULL) 
+				return 0; 
+			p = q.pHead; q.pHead = p->pNext; 
+			if (q.pHead == NULL) q.pTail = NULL; 
+		x = p->info; delete p; return 1; 
+		}
+Hàng đợi được ứng dụng: 
+- Tổ chức lưu vết quá trình tìm kiếm theo chiều rộng, quay lui, vét cạn 
+- Tổ chức quản lý và phân phối công việc
+
+STACK
+- Là cấu trúc dữ liệu cho phép lưu các phần tử chứa dữ liệu khác. 
+- Phần tử chứa dữ liệu được quản lý theo nguyên tắc LIFO (Last In First Out) trong đó phần tử được đưa vào stack trước sẽ được lấy ra khỏi stack sau 
+- Stack có đỉnh Stack luôn chỉ vào phần tử được thêm sau cùng.
+Stack có các thao tác đặc trưng sau: 
+- Push: thêm phần tử dữ liệu x vào stack. 
+- Pop: lấy đối tượng tại đỉnh ra khỏi stack. 
+- IsEmpty: kiểm tra stack có rỗng hay không. 
+- Top: lấy giá trị của phần tử tại đỉnh stack mà không hủy nó. 
+Stack có thể được cài đặt theo: 
+- Mảng 
+	+ Khai báo cấu trúc dữ liệu 
+		stack #define MAX 100 
+		struct Stack { 
+			TenDulieu data[MAX]; 
+			int sp; //stack pointer };
+	+ Tạo Stack rỗng 
+		void CreateStack(Stack &s) { 
+			s.sp = -1; 
+		} 
+	+ Kiểm tra Stack có rỗng hay không 
+		int IsEmpty(Stack &s) { 
+			return (s.sp == -1); 
+		}
+	+  Kiểm tra Stack đầy 
+		int IsFull(Stack &s) { 
+			return (s.sp >= MAX); 
+		}
+	+  Đưa phần tử vào Stack 
+		int Push(Stack &s, TenDulieu x) { 
+			if (IsFull(s)) 
+				return 0; 	
+			s.sp++; s.data[s.sp] = x; return 1; 
+		}
+	+  Lấy phần tử ra khỏi Stack 
+		int Pop(Stack &s, TenDulieu &x) { 
+			if (IsEmpty(s)) return 0; 
+			x = s.data[s.sp] s.sp--; return 1; 
+		}
+	+  Lấy giá trị phần tử ở đỉnh stack 
+		int Top(Stack &s, TenDulieu &x) { 
+			if (IsEmpty(s)) return 0; 
+			x = s.data[sp]; return 1; 
+		}
+- Danh sách đơn
+	+ Khai báo cấu trúc dữ liệu stack tương tự danh sách đơn 
+		struct TenDulieu { // Các trường dữ liệu cần quản lý }; 
+		struct Node { TenDulieu info; Node * pNext; }
+	+ Khai báo cấu trúc dữ liệu stack tương tự danh sách đơn 
+		struct Stack { 
+			Node * pHead, *pTail; 
+		}; 
+	+ Tạo Stack rỗng: 
+		void CreateStack(Stack &s) { 
+			s.pHead = NULL; s.pTail = NULL; 
+		}
+	+  Kiểm tra Stack rỗng 
+		int IsEmpty(Stack &s) { 
+			return s.pHead == NULL; 
+		}
+	+  Đưa phần tử dữ liệu vào stack 
+		void Push(Stack &s, Node *p) { 
+			if (s.pHead == NULL) { 
+				s.pHead = p; s.pTail = p; } 
+			else { p->pNext = s.pHead; s.pHead = p; 
+			} 
+		}
+	+ Lấy phần tử dữ liệu ra khỏi stack 
+		int Pop(Stack &s, TenDulieu &x) { 
+			Node *p; 
+			if (s.pHead == NULL)  return 0; 
+			p = s.pHead; s.pHead = p->pNext; 
+			if (s.pHead == NULL) s.pTail = NULL; 
+			x = p->info; delete p; return 1; 
+		}
+	+  Lấy dữ liệu của phần tử tại đỉnh stack 
+		int Top(Stack &s, TenDulieu &x) { 
+			if (IsEmpty(s)) return 0; 
+			x = s.pHead->info; 
+			return 1; 
+		}
+Ứng dụng của stack: 
+- Khử đệ quy đuôi 
+- Lưu vết các quá trình quay lui, vét cạn, tìm kiếm theo chiều sâu.

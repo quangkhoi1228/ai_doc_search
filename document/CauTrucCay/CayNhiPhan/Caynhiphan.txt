@@ -1,0 +1,84 @@
+CÂY NHỊ PHÂN
+
+ĐỊNH NGHĨA
+Cây nhị phân là cây mà mỗi node có tối đa hai cây con. Hai cây con này được đặt tên lần lượt là cây con trái và cây con phải.
+Cây nhị phân đầy đủ là cây nhị phân có các node lá có cùng mức và mỗi node trung gian có đúng 2 node con
+.
+Cây nhị phân hoàn chỉnh có chiều cao n là cây nhị đầy đủ với chiều cao n – 1 và các nút lá lệch trái nhất tại mức n
+
+TÍNH CHẤT
+- Số node tại mức i không quá 2^(i-1)
+- Số node của cây T không quá 2^h-1 với h là chiều cao của cây T.
+- Gọi n là số node của cây T, h là chiều cao của cây T,có h >= log2(n + 1)
+
+
+TỔ CHỨC DỮ LIỆU
+	struct TenDulieu {
+		// dữ liệu quản lý
+	};
+	struct Node {
+		TenDulieu key;
+		Node *pLeft, *pRight;
+	};
+	typedef Node * TREE;
+
+
+CÁC THAO TÁC CƠ BẢN
+- Tạo cây rỗng
+	void CreateTree(TREE &root) {
+		root = NULL;
+	}
+- Tạo node có khóa x
+	Node* CreateNode(TenDulieu x) {
+		Node *p = new Node;
+		if (p!=NULL)
+		{ p->key = x; p->pLeft = NULL; p->pRight = NULL;}
+		return p;
+	}
+
+- Duyệt cây: có 3 thứ tự duyệt dựa trên trình tự xử lý node gốc:
+	▪ Duyệt tiền thứ tự (duyệt trước)
+	▪ Duyệt trung thứ tự (duyệt giữa)
+	▪ Duyệt hậu thứ tự (duyệt sau)
+	▪ Duyệt tiền thứ tự (duyệt trước - Pre-order): nguyên tắc là xử lý nút gốc, sau đó duyệt cây con bên trái rồi duyệt cây con bên phải
+
+	void NLR(TREE root) {
+		if (root) {
+		// xử lý root
+		NLR(root->pLeft);
+		NLR(root->pRight);
+		}
+	}
+	▪ Duyệt trung thứ tự (duyệt giữa - In-order): nguyên tắc là duyệt cây con bên trái, sau đó xử lý nút gốc, rồi duyệt cây con bên phải
+	void LNR(TREE root) {
+		if (root) {
+		LNR(root->pLeft);
+		// xử lý root
+		LNR(root->pRight);
+		}
+	}
+	▪ Duyệt hậu thứ tự (duyệt sau - Post-order): nguyên tắc là duyệt cây con bên trái, sau đó duyệt cây con bên phải rồi xử lý nút gốc
+	void LRN(TREE root) {
+		if (root) {
+		LRN(root->pLeft);
+		LRN(root->pRight);
+		// xử lý root
+		}
+	}
+
+- Tạo cây từ kết quả duyệt: có thể tạo cây từ các kết quả duyệt sau:
+	▪ Tiền thứ tự và trung thứ tự
+	▪ Hậu thứ tự và trung thứ tự
+▪ Tạo cây từ kết quả duyệt tiền thứ tự và trung thứ tự:
+Nguyên tắc:
+	- Node đầu tiên X trong dãy tiền thứ tự là node gốc.
+	- Node X sẽ nằm trong dãy trung thứ tự, chia dãy này thành 2 dãy bên trái và bên phải. Dãy bên trái sẽ là cây con trái của X, dãy bên phải là cây con phải của X.
+	- Thực hiện tương tự cho dãy bên trái trước rồi đến dãy bên phải.
+
+▪ Tạo cây từ kết quả duyệt hậu thứ tự và trung thứ tự:
+Nguyên tắc:
+	- Node cuối cùng X trong dãy hậu thứ tự là node gốc.
+	- Node X sẽ nằm trong dãy trung thứ tự, chia dãy này thành 2 dãy bên trái và bên phải. Dãy bên trái sẽ là cây con trái của X, dãy bên phải là cây con phải của X.
+	- Thực hiện tương tự cho dãy bên phải trước rồi đến dãy bên trái.
+
+	

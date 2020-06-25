@@ -1,0 +1,67 @@
+KHÁI NIỆM
+Cho trước kiểu T=<V,O>. Kiểu con trỏ Tp=<Vp,Op> trỏ đến các biến kiểu T. 
+Khi đó, biến kiểu Tp có giá trị là địa chỉ của các biến kiểu T. 
+	Vp là miền giá trị của kiểu con trỏ Tp gồm giá trị NULL(bằng 0) và các địa chỉ của các biến kiểu T. 
+	Op là các phép toán trên kiểu con trỏ Tp gồm:
+		tăng địa chỉ (+), 
+		giảm địa chỉ (-), 
+		phân giải địa chỉ (*), 
+		gán giá trị địa chỉ (=).
+
+CÁC THAO TÁC TRÊN KIỂU CON TRỎ 
+- Tạo biến cấp phát động để con trỏ quản lý. 
+	+ Trong C, dùng hàm các hàm 
+		void* malloc(size) 
+		void* calloc(n,size) 
+	+ Trong C++, dùng phép toán new 
+		new kiểu // cấp phát vùng nhớ cho 1 biến 
+		new kiểu[n] //cấp phát vùng nhớ cho n biến
+	Kết quả cấp phát là địa chỉ ô nhớ đầu tiên của vùng nhớ được cấp phát hoặc giá trị NULL nếu không cấp phát được
+- Giải phóng biến cấp phát động do con trỏ quản lý. 
+	+ Trong C, dùng hàm void free(p) 
+	+ Trong C++, dùng phép toán delete 
+		delete p // nếu p = new kiểu
+		delete [] p // nếu p = new kiểu[n]
+- Tăng hoặc giảm địa chỉ vùng nhớ do con trỏ quản lý n lần kích thước kiểu: dùng phép toán tương ứng là + hoặc -.
+ Ví dụ: 
+	int *p; 
+	p = (int *)1; 
+	p = p + 4; // giá trị của p là 1+4*4=17. 1 
+	int = 4 bytes p--; // giá trị của p là 17-1*4=13. 
+Lưu ý: *(p + i) tương đương với p[i]
+- Phân giải địa chỉ con trỏ (dereference) bằng phép toán * 
+Phân giải địa chỉ con trỏ là truy cập đến biến cấp phát động. 
+Ví dụ: 
+	int *p; 
+	p = new int; // tạo một biến cấp phát động cho p 
+	*p = 100; // gán 100 cho biến cấp phát động 	
+	*p *= 2; // nhân 2 với giá trị biến cấp phát động 
+	cout << *p; // in ra giá trị biến cấp phát động
+
+SỬ DỤNG 
+- Khai báo kiểu con trỏ: 
+	typedef kiểu_cơ_sở * kiểu_con_trỏ; 
+- Khai báo biến con trỏ: 
+	kiểu_con_trỏ tên_biến; 
+	hoặc kiểu_cơ_sở *tên_biến; 
+Ví dụ: typedef int *IntPtr; IntPtr a; // tương đương với int *a
+- Con trỏ được sử dụng để lưu địa chỉ của biến cấp phát động => truy xuất biến cấp phát động bằng con trỏ: 
+Ví dụ: 
+1)	typedef int *IntPtr; 
+	//.... 
+	IntPtr x; 
+	x = new int; 
+	*x = 100;
+2)	typedef int *IntPtr; 
+	//.... 
+	IntPtr x;
+3)	typedef int *IntPtr;
+	//....	
+	IntPtr x; 
+	x = new int
+4) 	typedef int *IntPtr; 
+	//.... IntPtr x; 
+	x = new int; 
+	*x = 100;
+
+
