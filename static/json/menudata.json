@@ -1,5 +1,56 @@
 [
     {
+        "menucode": "Nga xinh gái",
+        "menuname": "Nga xinh gái",
+        "menuchildren": [
+            {
+                "menucode": "Nga xinh gái1 com1",
+                "menuname": "Nga xinh gái1 com1",
+                "menuchildren": [
+                    {
+                        "menucode": "Nga xinh gái",
+                        "menuname": "Nga xinh gái",
+                        "menuchildren": [
+                            {
+                                "menucode": "Nga xinh gái1 com1",
+                                "menuname": "Nga xinh gái1 com1",
+                                "menuchildren": [],
+                                "menuicon": "fab fa-penny-info",
+                                "menudes": "Nga thông tin1",
+                                "menutags": "xinh gái,xinh trai1"
+                            },
+                            {
+                                "menucode": "Nga xinh gái1 con2",
+                                "menuname": "Nga xinh gái1 con2",
+                                "menuchildren": [],
+                                "menuicon": "fab fa-penny-info",
+                                "menudes": "Nga thông tin1",
+                                "menutags": "xinh gái,xinh trai2"
+                            }
+                        ],
+                        "menuicon": "fab fa-penny-info",
+                        "menudes": "Nga thông tin",
+                        "menutags": "xinh gái,xinh trai"
+                    }
+                ],
+                "menuicon": "fab fa-penny-info",
+                "menudes": "Nga thông tin1",
+                "menutags": "xinh gái,xinh trai1"
+            },
+            {
+                "menucode": "Nga xinh gái1 con2",
+                "menuname": "Nga xinh gái1 con2",
+                "menuchildren": [],
+                "menuicon": "fab fa-penny-info",
+                "menudes": "Nga thông tin1",
+                "menutags": "xinh gái,xinh trai2"
+            }
+        ],
+        "menuicon": "fab fa-penny-info",
+        "menudes": "Nga thông tin",
+        "menutags": "xinh gái,xinh trai"
+    },
+    {
         "menucode": "HungDepTrai",
         "menuname": "Hùng xấu trai",
         "menuchildren": [
