@@ -1,4 +1,0 @@
-﻿PHÉP TÍNH
-Phép tính là một công việc máy tính thực hiện có
-thời gian xác định và không phụ thuộc vào kích
-thước dữ liệu đầu vào của bài toán.

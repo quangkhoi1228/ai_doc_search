@@ -1,6 +1,0 @@
-﻿TIÊU CHUẨN ĐÁNH GIÁ
-- Phản ánh đúng thực tế
-- Phù hợp với thao tác tìm kiếm, truy xuất, cập nhật,
-them hoặc xóa.
-- Tiết kiệm tài nguyên hệ thống.
-- Đơn giản và dễ hiểu.

@@ -1,9 +1,0 @@
-KHÁI NIỆM
-Cho trước kiểu T=<V,O>. Kiểu con trỏ Tp=<Vp,Op> trỏ đến các biến kiểu T. 
-Khi đó, biến kiểu Tp có giá trị là địa chỉ của các biến kiểu T. 
-	Vp là miền giá trị của kiểu con trỏ Tp gồm giá trị NULL(bằng 0) và các địa chỉ của các biến kiểu T. 
-	Op là các phép toán trên kiểu con trỏ Tp gồm:
-		tăng địa chỉ (+), 
-		giảm địa chỉ (-), 
-		phân giải địa chỉ (*), 
-		gán giá trị địa chỉ (=).

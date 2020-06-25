@@ -1,4 +1,0 @@
-QUẢN LÝ VÙNG NHỚ 
-Vùng nhớ chương trình được quản lý theo hai cách: 
-- Quản lý tự động: Được thực hiện khi khai báo biến, hằng trong C/C++. Các đối tượng này được gọi là biến cấp phát tĩnh (biến tĩnh, biến nửa tĩnh). 
-- Quản lý do người lập trình: Được thực hiện khi cấp phát vùng nhớ. Các vùng nhớ được cấp phát được gọi là biến cấp phát động (biến động)

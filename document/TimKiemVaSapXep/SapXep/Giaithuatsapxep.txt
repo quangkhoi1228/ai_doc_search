@@ -1,0 +1,509 @@
+KHÁI NIỆM
+
+* Sắp xếp là quá trình xử lý một danh sách sao chocác phần tử trong danh sách thỏa một quan hệ thứ tự R nào đó.
+
+* Nghịch thế: giả sử có danh sách A chứa các phần tử a0, a1, .. an-1 và một quan hệ thứ tự R cần thiết lập trên A, khi đó aj R ai nếu i < j là một nghịch thế.
+	Ví dụ: Cho A = {1, 2, 9, 4, 5, 6}, quan hệ thứ tự R là , khi đó, 9 và 4 là một nghịch thế vì 4  9 và vị trí của 4 là j = 3 và vị trí của 9 là i = 2, i < j.
+
+* Dãy chưa có thứ tự: là dãy chứa nghịch thế. 
+
+* Nguyên tắc sắp xếp: hoán vị các phần tử của dãy sao cho dãy không còn chứa nghịch thế. Ví dụ: Cho A = {1, 2, 9, 6, 5, 4}, quan hệ thứ tự R là , số nghịch thế là 6. Quá trình sắp xếp như sau: 
+	- Đổi chổ A[2] và A[5], A = {1, 2, 4, 6, 5, 9} số nghịch thế: 1. 
+	- Đổi chổ A[3] và A[4], A = {1, 2, 4, 5, 6, 9} số nghịch thế: 0.
+
+
+PHƯƠNG PHÁP INSERTION SORT
+Insertion Sort, hay còn gọi là chèn trực tiếp. 
+
+* Ý tưởng: Giả sử dãy A={ai }, i=0,..,n-1 có i phần tử đầu tiên a0 , a2 , ..,ai-1 đã có thứ tự tăng dần. Để A có i+1 phần tử đầu tiên có thứ tự thì cần chèn phần tử ai vào vị trí k trong đoạn [0,i] sao cho ak-1  ai < ak . Trường hợp dãy có 1 phần tử thì được xem là đã có thứ tự.
+
+* Giải Thuật: (theo ngôn ngữ tự nhiên)
+Đầu vào: mảng A có n phần tử chưa có thứ tự
+Đầu ra: mảng A có n phần tử đã có thứ tự tăng dần.
+	- B1: i <- 1 
+	- B2: x <- a[i], 
+	- B3: k <- i-1, 
+	- B4: nếu k >= 0 và A[k] > x thì k <- k-1, quay lại B4. 
+	- B5: k <- k+1, j <- i, 
+	- B6: nếu j > k thì A[j] = A[j-1], j <- j-1, quay lại B6. 
+	- B7: A[k] <- x, i <- i + 1 
+	- B8: Nếu i < n, qua bước 2.
+	 - B9: Kết thúc
+
+* Giải Thuật: (theo mã giả)
+	Đầu vào: mảng A có n phần tử chưa có thứ tự
+	Đầu ra: mảng A có n phần tử đã có thứ tự tăng dần.
+	for i <- 1 to n – 1 
+		x <- a[i], k <- i-1 
+		while k >= 0 AND A[k] > x 
+			k <- k-1 
+		k <- k+1, j <- i 
+		while j > k 
+			A[j] <- A[j-1], j <- j-1 
+		A[k] <- x
+
+* Cài đặt:
+void InsertionSort(int a*, int n)
+{
+	int k, i, j, x;
+	for (i = 1; i < n; i++)
+ 	{
+		x = a[i]; k = i - 1;
+		while ( k >= 0 && a[k] > x) k--; // xác định vị trí k
+		k=k+1;
+		for (j = i; j > k; j--) a[j] = a[j - 1]; // dời chỗ.
+			a[k] = x;
+	}
+}
+
+* Cài đặt: kết hợp tìm vị trí và dời chỗ
+void InsertionSort(int a*, int n)
+{
+	int k, i, x;
+	for (i = 1; i < n; i++)
+	{
+		x = a[i]; k = i - 1;
+		while ((k >= 0) && (a[k] > x))
+		{ a[k + 1] = a[k]; k--; } // tìm vị trí kết hợp với dời chỗ
+		a[k+1] = x;
+	}
+}
+
+* Đánh giá theo trường hợp xấu nhất: 
+Xét số phép so sánh giá trị khóa: Bỏ qua các phép tính để thực hiện vòng lặp và các phép gán, ta có: 
+	- Số phép tính để tìm vị trí k trong [0, i]: i 
+	- Số lần lặp để chèn ai : n - 1 
+	- T(n) = TongXichMa(i), i = 1,..,n-1 = n(n-1)/2 
+	Độ phức tạp tính toán theo số phép so sánh là O(n^2 ).
+
+* Đánh giá theo trường hợp xấu nhất:
+Xét số phép gán giá trị khóa: Bỏ qua các phép tính để thực hiện vòng lặp, ta có:
+	- Số phép tính để dời chỗ trong [0, i-1]: i
+	- Số phép tính để đưa ai vào vị trí: 2
+	- Số lần lặp để đưa ai vào vị trí : n - 1
+	- T(n) = TongXichMa(i + 2), i = 1,..,n-1
+	       = n(n-1)/2 + 2(n-1) = (n-1)(n+4)/2
+Độ phức tạp tính toán theo phép gán là O(n^2).
+
+* BInsertion Sort: 
+Để cải tiến việc xác định vị trí chèn phần tử, việc tìm kiếm vị trí thích hợp trong dãy a0 ,..,ai-1 có thể thực hiện bằng giải thuật tìm kiếm nhị phân.
+
+* Cài đặt:
+void BInsertionSort(int a*, int n) {
+	int k, i, j, l, r, x;
+	for (i = 1; i < n; i++) {
+		x = a[i]; r = i - 1; l = 0;
+		while (l <= r) { k = (l+r)/2; if (a[k] > x) r=k-1; else l=k+1; }
+		if (a[k] <= x ) k=k+1;
+		for (j = i; j > k; j--) a[j] = a[j - 1]; // dời chỗ.
+		a[k] = x;
+	}
+}
+
+
+PHƯƠNG PHÁP SELECTION SORT 
+Selection Sort, hay còn gọi là chọn trực tiếp 
+
+* Ý tưởng: Cho một dãy A={ai }, i=0,..,n-1. A có thứ tự tăng dần nếu aj là min(aj , aj+1 , ..,an-1 ) 
+Ví dụ: Dãy A = {5, 3, 4, 1, 2} có: 
+	A[0] = 1 = min(5, 3, 4, 1, 2). A = {1, 3, 4, 5, 2}
+	A[1] = 2 = min(3, 4, 5, 2). A = {1, 2, 4, 5, 3} 
+	A[2] = 3 = min(4, 5, 3). A = {1, 2, 3, 4, 5} 
+	A[3] = 4 = min(4, 5). A = {1, 2, 3, 4, 5} 
+	A[4] = 5 = min(5). A = {1, 2, 3, 4, 5}
+
+* Giải thuật: (theo ngôn ngữ tự nhiên) 
+Đầu vào: mảng A gồm n phần tử chưa có thứ tự. 
+Đầu ra: mảng A gồm n phần tử đã có thứ tự. 
+	+ B1: i <- 0 
+	+ B2: j <- i + 1, min <- i 
+	+ B3: nếu A[min] > A[j] thì min <- j 
+	+ B4: nếu j < n thì j <- j + 1 đến B3. 
+	+ B5: hoán đổi A[i] với A[min] 
+	+ B6: nếu i < n - 1 thì i <- i + 1, đến B2. 
+	+ B7: kết thúc.
+	Trong đó: B3, B4, B5: tìm min của A[i], A[i+1], .., A[n – 1]
+
+* Giải thuật: (theo mã giả) 
+Đầu vào: mảng A gồm n phần tử chưa có thứ tự. 
+Đầu ra: mảng A gồm n phần tử đã có thứ tự. 
+	for i <- 0 to n – 2 
+		min <- i 
+		for j <- i + 1 to n – 1 
+			if A[min] > A[j] min <- j 
+		hoandoi(A[min], A[i])
+
+* Cài đặt:
+void hoandoi(int &a, int &b) { int c = a; a = b; b = c;}
+void SelectionSort(int a[], int n) {
+int min, i;
+for (i=0; i<n-1; i++) {
+	min = i;
+	for (int j=i+1; j<n; j++)
+		if (a[min] > a[j]) min = j;
+	hoandoi(a[i], a[min]);
+}
+
+* Đánh giá theo trường hợp xấu nhất:
+Xét số phép so sánh giá trị khóa: Bỏ qua các phép tính để thực hiện vòng lặp, ta có:
+	- Số phép tính để tìm min trong đoạn [i, n - 1]: n - i - 1
+	- Số lần lặp tìm min: n - 1
+	- T(n) = TongXichMa(n - i - 1), i = 0,..,n-2
+		= (n-1)(n-1) - (n-2)(n-1)/2
+		= n(n-1)/2
+	Độ phức tạp tính toán theo số phép so sánh là O(n^2).
+
+* Đánh giá theo trường hợp xấu nhất: 
+Xét số phép gán giá trị khóa: Bỏ qua các phép tính để thực hiện vòng lặp, ta có: 
+	- Số phép tính để hoán vị 3 
+	- Số lần lặp hoán vị: n - 1 - T(n) = TongXichMa3, i = 0,..,n-2 = 3(n-1) 
+	Độ phức tạp tính toán theo phép gán là O(n).
+
+
+
+PHƯƠNG PHÁP BUBBLE SORT
+Bubble Sort, hay còn gọi là sắp xếp nổi bọt
+
+* Ý tưởng: Giả sử dãy A={ai} có n phần tử. Bắt đầutừ cuối dãy, các phần tử nhỏ sẽ được đẩy dần vềphía trái dãy đến vị trí đúng của nó bằng cách thựchiện các phép hoán vị 2 phần tử liên tiếp có tạonghịch thế. Khi một phần tử nhỏ nhất được đưa vềđầu dãy thì chỉ xét việc hoán vị cho dãy mới gồmcác phần tử còn lại.
+
+* Giải Thuật: (theo ngôn ngữ tự nhiên)
+Đầu vào: mảng A gồm n phần tử chưa có thứ tự
+Đầu ra: mảng A gồm n phần tử đã có thứ tự.
+	- Bước 1: i <- 0
+	- Bước 2: j <- n-1
+	- Bước 3: Nếu j <- i thực hiện bước 5. Ngược lại, nếu A[j]<A[j - 1] thì hoán đổi A[j] và A[j-1].
+	- Bước 4: j <- j - 1, qua bước 3.
+	- Bước 5: i <- i +1. Nếu i < n-1 qua bước 2.
+	- Bước 6: Kết thúc.
+
+* Giải Thuật: (theo mã giả)
+Đầu vào: mảng A gồm n phần tử chưa có thứ tự
+Đầu ra: mảng A gồm n phần tử đã có thứ tự.
+	for i <- 0 to n – 2
+		for j <- n - 1 down to i + 1
+			if A[j] < A[j - 1]
+				hoandoi(A[j], A[j - 1])
+
+* Cài đặt:
+void BubbleSort(int a*, int n) {
+	int i, j;
+	for (i = 0; i < n-1; i++) {
+		for (j = n-1; j > i; j--)
+			if (a[j] < a[j-1])
+				hoandoi(a[j], a[j-1]);
+	}
+}
+
+* Đánh giá theo trường hợp xấu nhất:
+- Xét số phép so sánh giá trị khóa: Bỏ qua các phép tính để thực hiện vòng lặp, ta có:
+	T(n) = n(n-1)/2
+	Độ phức tạp tính toán theo số phép so sánh là O(n2).
+- Xét số phép gán giá trị khóa: Bỏ qua các phép tính để thực hiện vòng lặp, ta có:
+	T(n) = 3*n(n-1)/2
+	Độ phức tạp tính toán theo số phép gán là O(n^2)
+
+* Giải thuật Shaker Sort:
+Cải tiến từ bubble sort với lượt đẩy phần tử lớn về cuối mảng trong mỗi lần lặp và ghi nhớ vị trí xuất hiện nghịch thế cuối cùng của mỗi lượt đẩy. Các vị trí này xác định phạm vi các phần tử cần tiến hành sắp xếp trong lần lặp tiếp theo.
+	Thuật toán (theo mã giả):
+	Đầu vào: mảng A gồm n phần tử chưa có thứ tự
+	Đầu ra: mảng A gồm n phần tử đã có thứ tự.
+	b <- 1, e <- n - 1
+	while (b < e)
+		j <- e, tmp <- e
+		while (j > b)
+		{
+			if A[j] < A[j - 1]
+			{
+				hoandoi(A[j], A[j - 1]), tmp <- j
+			}
+			j <- j – 1
+		}
+		b <- tmp
+		j <- b, tmp <- b
+		while (j <= e)
+		{
+			if A[j] < A[j - 1]
+			{
+				hoandoi(A[j], A[j - 1]), tmp <- j
+			}
+			j <- j + 1
+		}
+		e <- tmp
+	}
+
+
+
+PHƯƠNG PHÁP INTERCHANGE SORT
+Interchange Sort, hay còn gọi là đổi chỗ trực tiếp
+
+* Ý tưởng: Giả sử dãy A={ai} có n phần tử. Nếu A có thứ tự thì A không chứa nghịch thế. Vì vậy, với mỗi vị trí thứ i, phải triệt tiêu tất cả nghịch thế giữa phần tử tại vị trí đó với các vị trí còn lại. Bắt đầu từ đầu dãy, sau khi đã triệt tiêu nghịch thế tại vị trí thứ i thì sẽ không có nghịch thế giữa i và i+1 nên chỉ cần xét đãy từ i+1 đến n-1 cho lần triệt tiêu nghịch thế tại vị trí i+1.
+
+* Giải thuật:
+Đầu vào: mảng A gồm n phần tử chưa có thứ tự
+Đầu ra: mảng A gồm n phần tử đã có thứ tự.
+	- Bước 1: i <- 0
+	- Bước 2: j <- i+1
+	- Bước 3: Nếu j > n-1 thực hiện bước 5. Ngược lại, nếu A[j]<A[i] thì hoán đổi A[j] và A[i].
+	- Bước 4: j <- j + 1, qua bước 3.
+	- Bước 5: i <- i +1. Nếu i < n-1 qua bước 2.
+	- Bước 6: Kết thúc.
+
+* Cài đặt:
+void InterchangeSort(int a*, int n) {
+	int i, j;
+	for (i = 0; i < n-1; i++) {
+		for (j = i+1; j < n; j++)
+			if (a[j] < a[i])
+				hoandoi(a[j], a[i]);
+	}
+}
+
+* Đánh giá theo trường hợp xấu nhất:
+- Xét số phép so sánh giá trị khóa: Bỏ qua các phép tính để thực hiện vòng lặp, ta có:
+	T(n) = n(n-1)/2
+	Độ phức tạp tính toán theo số phép so sánh là O(n^2).
+- Xét số phép gán giá trị khóa: Bỏ qua các phép tính để thực hiện vòng lặp, ta có:
+	T(n) = 3*n(n-1)/2
+	Độ phức tạp tính toán theo số phép gán là O(n^2)
+
+
+
+PHƯƠNG PHÁP HEAP SORT
+*Khái niệm Heap là một cây nhị phân hoàn chỉnh (complete) trong đó nếu A là nút cha của B và quan hệ R được thỏa trên cây thì A R B.
+
+* Tính chất của Heap
+	- Phần tử gốc của heap mang giá trị cực trị (Nếu xét quan hệ >= thì phần tử gốc là cực đại, nếu xét quan hệ <= thì phần tử gốc là cực tiểu)
+	- Các nút lá của một heap là một heap.
+
+* Điều chỉnh một cây thành heap
+Giả sử điều chỉnh cây thành heap, quan hệ R là >=
+	- B1: Đánh dấu n nút trên cây theo thứ tự từng mức, tại mỗi mức đánh dấu theo thứ tự từ trái sang.
+	- B2: Xét lần lượt các nút i, i = n-1,..,0. Điều chỉnh cây có gốc k = i thành heap.
+Việc điều chỉnh cây có gốc k thành heap được thực hiện như sau:
+	- B1: Nếu nút k là nút lá, qua B5.
+	- B2: Chọn nút con lớn nhất j của nút k.
+	- B3: Nếu khóa tại nút k lớn hơn khóa tại nút j, qua bước 4; ngược lại, hoán vị khóa tại nút k và nút j
+	- B4: k <- j. Qua bước B1.
+	- B5: Kết thúc.
+
+* Xóa nút gốc của heap
+Để xóa nút gốc của heap mà vẫn đảm bảo cây còn lại là 1 heap, thực hiện như sau:
+	- B1: hoán vị nút tại vị trí 0 và vị trí n-1, xóa nút n-1.
+	- B2: Điều chỉnh cây có gốc k = 0 thành một heap.
+
+* Lưu trữ cấu trúc heap nhị phân
+Heap nhị phân có thể được lưu trữ theo cấu trúc cây nhị phân. Tuy nhiên, để tăng hiệu quả, dùng mảng một chiều để lưu trữ heap.
+
+* Lưu trữ cấu trúc heap nhị phân
+Tính chất của mảng heap nhị phân:
+- Phần tử thứ i là cha của hai phần tử i*2 + 1 và (i+1)*2. Vì vậy, ai  ai*2 + 1 và ai >= a(i+1)*2
+- Các nút i >= n/2 là đỉnh của một heap một phần tử.
+Nhận xét: Heap là một cấu trúc dữ liệu dạng cây. Tuy nhiên nó có thể được lưu trữ bằng một dãy tuần tự. Vì thế, cấu trúc dữ liệu có thể khác với cấu trúc lưu trữ.
+
+* Cài đặt giải thuật tạo heap nhị phân trên mảng.
+void Heapify(int *a, int k, int n) {
+	int x, j = 2*k+1;
+	while (j < n) {
+		if (j + 1 < n)
+			if (a[j] < a[j + 1]) j = j + 1;
+		if (a[k] >= a[j]) return;
+		x = a[k]; a[k] = a[j]; a[j] = x; k = j; j = 2*k + 1;
+	}
+}
+
+void BuildHeap(int *a, int n) {
+	int i;
+	i = (n - 1) / 2;
+	while (i >= 0) {
+		Heapify(a, i, n);
+		i--;
+	}
+}
+
+* Ý tưởng:
+Heap sort cải tiến dựa trên Selection Sort trong đó việc chọn phần tử thích hợp (lớn nhất hoặc nhỏ nhất) được thực hiện trên heap để giảm chi phí so sánh. Để sắp xếp mảng theo thứ tự tăng dần, sử dụng heap max (đỉnh heap là max) để chọn phần tử lớn nhất trong i phần tử còn lại của mảng. Phần tử này sẽ có vị trí i-1 trong mảng đã sắp xếp.
+
+* Giải thuật:
+Đầu vào là mảng A có n phần tử chưa có thứ tự
+Đầu ra là mảng A có n phần tử có thứ tự tăng dần
+	- B1: Tạo heap nhị phân trên mảng A có n phần tử
+	- B2: Hoán đổi A[0] và A[n-1] để đưa phần tử max về cuối dãy.
+	- B3: n <- n - 1. Nếu n > 0 thì điều chỉnh A với n phần tử thành heap, qua B2.
+	- B4: Kết thúc.
+
+* Cài đặt:
+void HeapSort(int *a, int n) {
+	BuildHeap(a, n);
+	while (n > 0) {
+		n = n - 1;
+		hoandoi(a[0], a[n]);
+		Heapify(a, 0, n);
+	}
+}
+
+* Đánh giá giải thuật:
+Trong mọi trường hợp giải thuật Heap Sort có độ phức tạp trung bình O(nlogn) cho cả phép so sánh và phép gán.
+
+
+
+
+PHƯƠNG PHÁP SHELL SORT
+* Ý tưởng: Cải tiến từ giải thuật Insertion Sort. Trong đó, để sắp xếp dãy A = {ai}, i = 0,.., n-1, sẽ chia dãy thành những dãy con đan xen nhau, những dãy này cách nhau h phần tử và sắp xếp những dãy này theo phương pháp Insertion Sort. Sau đó giảm độ dài h để tạo thành những dãy đan xen mới và sắp xếp. Cuối cùng, dãy A được sẽ được sắp xếp khi sắp xếp với dãy cuối cùng có h = 1. Mục tiêu của việc chia dãy là để giảm trường hợp dời chỗ trong Insertion Sort.
+
+
+
+PHƯƠNG PHÁP QUICK SORT
+* Ý tưởng:(Quick sort - sắp xếp dựa trên phân hoạch)
+Giả sử dãy A có n phần tử có thứ tự tăng dần.
+- Phần tử chốt (pivot) ak, k = 0,..,n-1 có giá trị khóa không nhỏ hơn các phần tử của dãy đã có thứ tự a0,..,ak-1 và có giá trị khóa không lớn hơn các phần tử của dãy đã có thứ tự ak+1,..an-1.
+- Để sắp xếp, chọn một phần tử ak bất kỳ trong A, chia dãy A thành hai dãy a0,..,ak-1 có giá trị không lớn hơn ak và dãy ak+1,..,an-1 có giá trị không nhỏ hơn, sắp xếp hai dãy này theo cách như trên.
+
+* Giải thuật: Sử dụng giải thuật đệ quy như sau:
+Đầu vào: dãy al,al+1,..,ar chưa có thứ tự.
+Đầu ra: dãy al, al+1,..,ar có thứ tự tăng dần.
+	- B1: Nếu l < r thì k <- (l + r)/2, x <- ak, i <- l, j <- r; ngược lạiqua B6.
+	- B2: Nếu ai > x, qua B3; ngược lại i <- i+1, qua B2.
+	- B3: Nếu aj < x, qua B4; ngược lại j <- j - 1, qua B3.
+	- B4: Nếu i < j thì hoán đổi ai và aj.
+	- B5: Thực hiện Quick Sort cho dãy al, al+1,..,ar=j và al=i, ai+1,..,ar
+	- B6: Kết thúc.
+
+* Cài đặt:
+void QuickSort(int *a, int l, int r) {
+	int i, j, x;
+	if (l >= r) return;
+	x = a[(l+r)/2]; i = l; j = r;
+	while(i < j) {
+		while (a[i] < x) i++; while (a[j] > x) j--;
+		if (i <= j) {hoandoi(a[i], a[j]); i++; j--; }
+	}
+	QuickSort(a, l, j); QuickSort(a, i, r);
+}
+
+* Đánh giá: Theo phép so sánh
+	- Trường hợp tốt nhất: O(nlogn)
+	- Trường hợp trung bình:O(nlogn)
+	- Trường hợp xấu nhất: O(n^2
+)
+
+* Nhận xét:
+- Việc lựa chọn phần tử chốt ảnh hưởng đến chí phí thực hiện thuật toán. Phần tử chốt tốt nhất nếu nó là phần tử trung vị (median) của dãy và xấu nhất nếu nó là phần tử lớn nhất hoặc nhỏ nhất của dãy. Phần tử trung vị là phần tử có giá trị lớn một nửa số phần tử của dãy chứa nó.
+- Để hạn chế khả năng xảy ra trường hợp xấu nhất, có thể chọn tùy ý 3 hoặc 5 giá trị, sau đó chọn median của các giá trị này.
+- Quick sort có hiệu quả khi sắp xếp các dãy số lớn mà không có ràng buộc về thời gian.
+- Heap sort thích hợp với yêu cầu sắp xếp trong thời gian giới hạn đối với mọi trường hợp.
+- Đối với dữ liệu nhỏ, nên sử dụng các phương pháp sắp xếp cơ bản, ví dụ Selection Short (thậm chí là Bubble Sort), vì:
+	- Cài đặt dễ dàng.
+	- Chi phí tính toán nhiều hơn các phương pháp khác không đáng kể.
+
+
+
+PHƯƠNG PHÁP MERGE SORT
+* Ý tưởng: (Merge sort – Sắp xếp trộn)
+	Dãy A chưa có thứ tự khi nó chứa nhiều dãy con có thứ tự nhưng thứ tự này không được duy trì từ dãy con này sang dãy con khác. Việc trộn các phần tử của các dãy này theo thứ tự cần xếp sẽ tạo nên dãy A có thứ tự.
+	Với dãy A có n phần tử, ban đầu có thể xem A gồm n dãy
+con có thứ tự, mỗi dãy có k=1 phần tử. Chia dãy A thành hai dãy A1 và A2, sau đó trộn từng cặp gồm 1 dãy con của A1 và dãy con của A2 thành dãy A. Kết quả là dãy sẽ có chặn trên n/2 dãy cần trộn, mỗi dãy có k=2 phần tử. Thực hiện tương tự, mỗi lần số dãy sẽ được giảm một nữa và số phần tử k mỗi dãy tăng gấp đôi. Thực hiện đến khi số dãy còn 1, tức là dãy A có thứ tự. Phương pháp này được gọi là trộn trực tiếp.
+
+* Giải Thuật:
+Đầu vào: dãy a1,a2,..,an chưa có thứ tự
+Đầu ra: dãy a1,a2,..,an đã có thứ tự tăng dần
+	- B1: k-<1
+	- B2: Tách dãy thành hai dãy B và C bằng cách phân phốiluân phiên k phần tử cho mỗi dãy
+		B = a1,..,ak,a2k+1,..,a3k,... C = ak+1,..,a2k,a3k+1,..,a4k,..
+	- B3: Trộn từng cặp dãy con k phần tử của B và C vào A
+	- B4: k<-2*k, nếu k < n thì qua B2.
+	- B5: Kết thúc.
+
+* Cài đặt:
+#define min(x,y) (x > y) ? y : x
+int b[MAX], c[MAX];
+void Merge(int *a, int nb, int nc, int k) {
+	int p=0,pb=0,pc=0,ib =0,ic = 0,kb,kc;
+	kb = min(k, nb); kc = min(k, nc);
+	while ((nb > 0) && (nc > 0)) {
+		if (b[pb+ib] <= c[pc+ic]) {
+			a[p++]=b[pb+ib]; ib++;
+			if (ib == kb) {
+				for (; ic<kc; ic++) a[p++] = c[pc+ic];
+				pb+=kb;pc+=kc; ib=0;ic=0;nb-=kb;nc-=kc;
+				kb = min(k, nb); kc = min(k, nc);
+			}
+		}
+		else {
+			a[p++]=c[pc+ic]; ic++;
+			if (ic == kc) {
+				for (; ib<kb; ib++) a[p++] = b[pb+ib];
+				pb+=kb;pc+=kc; ib=0;ic=0;nb-=kb;nc-=kc;
+				kb = min(k, nb); kc = min(k, nc);
+			}
+		}
+	}
+}
+
+void MergeSort(int *a, int n) {
+	int p, pb, pc, i, k = 1;
+	while (k < n) {
+		p = 0; pb = 0; pc = 0;
+		while (p < n) {
+			for (i = 0; (p < n) && (i < k); i++) b[pb++]=a[p++];
+			for (i = 0; (p < n) && (i < k); i++) c[pc++]=a[p++];
+		}
+		Merge(a, pb, pc, k);
+		k *= 2;
+	}
+}
+
+* Đánh giá độ phức tạp của giải thuật:
+Độ phức tạp của giải thuật Merge Sort như trên trong tất cả trường hợp cho cả phép so sánh và phép gán là O(nlogn).
+
+* Nhận xét:
+- Giải thuật Merge Sort như trên chưa tận dụng được đặc điểm của dãy cần sắp xếp.
+- Quá trình chia dãy và trộn hai dãy con cần thêm không gian bộ nhớ nên cần áp dụng cho cấu trúc dữ liệu thích hợp hơn như danh sách liên kết hoặc file.
+
+* Trộn tự nhiên (Natural Merge Sort):
+Là phương pháp cải tiến để việc phân chia dãy con phù hợp với đặc điểm của dãy hơn. Thay vì xuất phát từ n dãy con có thứ tự gồm 1 phần tử, trộn tự nhiên xuất phát từ r dãy con đã có thứ tự sẵn gọi là đường chạy (run). Quá trình chia dãy sẽ phân phối luân phiên các run thành 2 dãy con.
+
+* Giải thuật trộn tự nhiên:
+Đầu vào: dãy A = {a1,a2,..,an} chưa có thứ tự
+Đầu ra: dãy A = {a1,a2,..,an} đã có thứ tự tăng dần
+	- B1: r <- 0
+	- B2: Nếu chưa phân phối hết các phần tử của dãy thìphân phối cho B một đường chạy, r <- r + 1; ngược lại qua B4
+	- B3: Nếu chưa phân phối hết các phần tử của dãy thì phân phối cho C một đường chạy, r <- r + 1, qua B2.
+	- B4: Trộn từng cặp đường chạy của B và C vào A.
+	- B5: Nếu r > 1, qua B1.
+	- B6: Kết thúc.
+
+* Cài đặt:
+#define min(x,y) (x > y) ? y : x
+int b[MAX], c[MAX];
+void MergeSort(int *a, int n) {
+	int p, pb, pc, r, lane, t, i, j, k;
+	do{
+		r = 0; p = 0; pb = 0; pc = 0; k = 0; lane = 1;
+		t = a[p++]; b[pb++] = t;
+		while (p < n) { // tách và trộn từng dãy
+			if (lane == 1) {
+				if (t <= a[p]) { t = a[p++]; b[pb++] = t; }
+				else { lane = 2; t = a[p++]; c[pc++] = t; r++;}
+			}
+			else {
+				if (t <= a[p]) { t = a[p++]; c[pc++] = t;}
+				else { lane = 0; r++; }
+			}
+			if ((lane == 0)||(p == n)) {
+			i = 0; j = 0;
+			while ((pb > i) && (pc > j)) {
+				if (b[i] < c[j]) {
+					a[k++] = b[i++];
+					if (i == pb) for ( ;j<pc;j++) a[k++]=c[j];
+				}
+				else {
+					a[k++] = c[j++];
+					if (j == pc) for ( ;i <pb;i++) a[k++]=b[i];
+				}
+			}
+			if (p < n) {
+				pb=0; pc=0; lane=1;t=a[p++]; b[pb++]=t;				
+			}
+		}
+	} while (r > 1);
+}

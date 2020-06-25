@@ -1,0 +1,65 @@
+﻿ĐỊNH NGHĨA
+Kiểu dữ liệu T là một bộ <V, O> trong đó V là miền
+giá trị và O là tập các phép toán được định nghĩa
+trên V
+
+CÁC KIỂU DỮ LIỆU CƠ BẢN
+Là các kiểu dữ liệu được định nghĩa bởi ngôn ngữ
+lập trình. Kiểu dữ liệu cơ bản được gọi là kiểu dữ
+liệu tiền định hay nguyên thủy (primitive).
+Trong C/C++, các kiểu dữ liệu cơ bản gồm char,
+short, long, int, float, double, enum, ...
+
+CÁC KIỂU DỮ LIỆU CÓ CẤU TRÚC
+- Là các kiểu dữ liệu được người lập trình định nghĩa
+bằng cách kết hợp các kiểu dữ liệu cơ bản để biểu
+diễn dữ liệu của bài toán. Các kiểu dữ liệu này được
+gọi là kiểu dữ liệu trừu tượng (ADT - Abstract Data
+Type) và được xử lý bằng các hàm xây dựng riêng
+cho từng kiểu dữ liệu.
+- Kiểu chuỗi ký tự: là một dãy các ký tự liên tiếp
+nhau.
++ Khai báo:
+char s[10];
+char s[] = "ABC";
+char *s = "ABC";
++ Một số thao tác trên kiểu chuỗi: so sánh hai chuỗi:
+strcmp(), sao chép chuỗi: strcpy(), kiểm tra chuỗi:
+strstr(), cắt chuỗi: strtok(), đổi số ra chuỗi: itoa()...
+- Kiểu mảng: là một tập hợp có thứ tự các giá trị
+cùng kiểu.
++ Khai báo:
+<kiểu> tênbiến[<số_pt1>][<số_pt2>]...;
++ Thao tác đặc trưng: truy xuất thành phần của
+mảng:
+<Tên_biến>[chỉ_số]
+- Kiểu mẫu tin (record hoặc struct - cấu trúc): là tập hợp
+các trường giá trị có thể khác kiểu.
++ Khai báo:
+typedef struct {
+<kiểu> <tên_trường>;
+<kiểu> <tên_trường>;
+} <Tên_Kiểu>;
+// C
+struct <Tên_Kiểu>{
+<kiểu> <tên_trường>;
+<kiểu> <tên_trường>;
+};
+// C++
++ Thao tác đặc trưng: truy xuất trường
+<Tên_biến>.<tên_trường>
+- Kiểu union: là tập hợp các trường giá trị có thể khác
+kiểu cùng sử dụng một vùng nhớ.
++ Khai báo:
+typedef union {
+<kiểu> <tên_trường>;
+<kiểu> <tên_trường>;
+} <Tên_Kiểu>;
+// C
+union <Tên_Kiểu>{
+<kiểu> <tên_trường>;
+<kiểu> <tên_trường>;
+};
+// C++
++ Thao tác đặc trưng: truy xuất trường
+<Tên_biến>.<tên_trường>

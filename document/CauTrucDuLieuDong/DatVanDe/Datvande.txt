@@ -1,0 +1,43 @@
+BIẾN CẤP PHÁT TĨNH 
+- Là các biến được tạo bằng khai báo. 
+- Ví dụ: 
+	struct PS
+	{
+		int ts, ms; 
+	}; 
+	int x, y; char s[50]; 
+	PS p;
+- Biến cấp phát tĩnh (biến tĩnh, biến nữa tĩnh) có các đặc điểm sau: 
+ 	Được khai báo tường minh, có tên gọi. 
+	Tồn tại trong phạm vi khai báo. 
+	Được cấp phát trong stack segment hoặc data segment. 
+	Kích thước không đổi. Ví dụ: kích thước mảng.
+-NHƯỢC ĐIỂM CỦA CẤP PHÁT TĨNH 
+	1) Lãng phí bộ nhớ. 
+	Ví dụ: danh sách nhân viên của một công ty có thể thay đổi. 
+	Giải pháp: xác định kích thước tối đa n của danh sách, khai báo mảng với kích thước n => lãng phí bộ nhớ.
+	2) Không thể định nghĩa kiểu có cấu trúc đệ quy vì không xác định được kích thước của nó
+
+BIẾN CẤP PHÁT ĐỘNG
+- Là các biến được tạo khi cấp phát vùng nhớ. 
+- Ví dụ: 
+struct PS
+{
+	int ts, ms;
+}; 
+- Tạo vùng nhớ cho biến kiểu nguyên: 
+	malloc(sizeof(int)); hoặc new int; 
+- Tạo vùng nhớ cho biến kiểu PS: 
+	malloc(sizeof(PS)); hoặc new PS;
+- Biến cấp phát động (biến động) có các đặc điểm sau: 
+	Không được khai báo tường minh, không có tên gọi. 
+	Cấp phát khi cần sử dụng, khi hết sử dụng phải giải phóng. 
+	Được cấp phát trong heap segment. 
+	Kích thước vùng nhớ được cấp phát tùy theo yêu cầu và giới hạn bộ nhớ.
+
+QUẢN LÝ VÙNG NHỚ 
+Vùng nhớ chương trình được quản lý theo hai cách: 
+- Quản lý tự động: Được thực hiện khi khai báo biến, hằng trong C/C++. Các đối tượng này được gọi là biến cấp phát tĩnh (biến tĩnh, biến nửa tĩnh). 
+- Quản lý do người lập trình: Được thực hiện khi cấp phát vùng nhớ. Các vùng nhớ được cấp phát được gọi là biến cấp phát động (biến động)
+
+

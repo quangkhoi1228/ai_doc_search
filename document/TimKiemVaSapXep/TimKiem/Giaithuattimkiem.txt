@@ -1,0 +1,153 @@
+KHÁI NIỆM
+Tìm kiếm là thao tác duyệt toàn bộ một tập hợp nào đó để xác định các phần tử trong tập hợp đó thỏa một tính chất nào đó.
+Khóa là trường trong một cấu trúc được sử dụng để tính toán trong quá trình tìm kiếm và sắp xếp.
+Ví dụ 1: giả sử có cấu trúc.
+	struct MayTinh {
+		int maso;
+		char tenmay[20];
+		int dongia;
+	};
+Trường được gọi là khóa nếu nó được dùng để tính toán trong tìm kiếm và sắp xếp.
+
+
+TÌM KIẾM TUYẾN TÍNH (Linear Search)
+Tìm kiếm tuyến tính là tìm kiếm một giá trị khóa x trên một tập hợp chưa có thứ tự bằng cách duyệt tuần tự từng phần tử trong tập hợp để xác định phần tử có giá trị khóa bằng x.
+Ví dụ: tìm phần tử có giá trị 5 trong tập hợp {1, 2, 9, 4, 3, 5, 7}
+
+Giải thuật: Giả sử n phần tử của tập hợp A được đánh số thứ tự từ 0 đến n-1, tìm phần tử có giá trị khóa x.
+	- Bước 1: i <- 0
+	- Bước 2: Nếu i < n thì qua bước 3, ngược lại qua bước 5.
+	- Bước 3: Nếu A[i] == x qua bước 5.
+	- Bước 4: i <- i + 1. qua bước 2.
+	- Bước 5: Nếu i < n thì tìm thấy, ngược lại là không tìm thấy
+	- Bước 6: Kết thúc.
+
+Cài đặt
+int LinearSearch(int *A, int n, int x) {
+	int i = 0;
+	while (i<n) {
+		if (A[i] == x) break;
+		i++;
+	}
+	if (i < n) return i; // Tìm thấy
+	else return -1; // Không tìm thấy
+}
+
+Đánh giá theo trường hợp xấu nhất
+	- số phép tính trước vòng lặp: 1
+	- số phép so sánh tại vòng lặp : 2*n + 1
+	- số phép toán nếu tìm thấy: 1
+	- số phép tăng i tại vòng lặp: n
+	- số phép tính sau vòng lặp: 2
+	- số phép tính của giải thuật: 3n + 5
+	Độ phức tạp của thuật toán là: O(n).
+
+Đánh giá theo trường hợp trung bình
+	Trường hợp giá trị x ở vị trí thứ i
+	- số phép tính trước vòng lặp: 1
+	- số phép so sánh tại vòng lặp : 2*i
+	- số phép toán nếu tìm thấy: 1
+	- số phép tăng i tại vòng lặp: i
+	- số phép tính sau vòng lặp: 2
+	- số phép tính Ti(n): 3i + 4
+Giả sử sự xuất hiện của x tại vị trí thứ i là ngẫu nhiên với xác suất là 1/n, số phép tính trung bình là: 
+	T(n) = TongXichMa iTi (n).1/n, i = 0, n. 
+	= (1/n) TongXichMa i (3i + 4) 
+	= (1/n)*(3(n + 1)*(n+2)/2 + 4(n+1)) 
+	= (1/n)*(3n2+17n+14)/2 
+	= 3n/2 + 17/2 +7/n 
+	Độ phức tạp của thuật toán là O(n).
+
+
+
+TÌM KIẾM NHỊ PHÂN (Binary Search) 
+Tìm kiếm nhị phân là tìm kiếm một giá trị khóa x trên một dãy có thứ tự a0  a1 …an-1 bằng cách so sánh giá trị khóa của phần tử ai ở trung tâm dãy. Nếu ai có thứ tự nhỏ hơn x thì sẽ tìm x trong dãy con [ai+1,an-1 ]. Nếu ai có thứ tự lớn hơn x thì sẽ tìm x trong dãy con [a0 , ai-1 ]. Nếu ai bằng x thì dừng. Việc thực hiện tìm kiếm trong dãy con được diễn ra tương tự. 
+Ví dụ: tìm phần tử có giá trị 3 trong dãy {1, 2, 3, 4, 5, 7, 9}
+
+Giải thuật: tìm khóa x trong dãy A gồm n phần tử ai được đánh số từ 0 đến n - 1 
+	- Bước 1: l <- 0, r <- n-1 // l: left, r: right 
+	- Bước 2: m <- (l + r)/2. 
+		+ Nếu A[m] = x thì tìm thấy và qua bước 5. 
+		+ Nếu A[m] > x thì r <- m-1 ngược lại thì l <- m+1. 
+	- Bước 3: Nếu l <= r thì quay lại bước 2. 
+	- Bước 4: Thông báo không tìm thấy. 
+	- Bước 5: Kết thúc.
+
+Cài đặt
+int BinarySearch(int *A, int n, int x) {
+	int l = 0, r = n-1, m;
+	do {
+	m = (l + r) / 2;
+	if (x == A[m]) return m; // Tìm thấy
+	else if (x < A[m]) r = m - 1;
+		else l = m + 1;
+	}while (l <= r);
+	return -1; // Không tìm thấy
+}
+
+Đánh giá theo trường hợp xấu nhất:
+	- Số phép tính trước vòng lặp: 2
+	- Số phép tính trong vòng lặp: 5
+	- Số lần lặp (số lần chia dãy): log2n
+	- Số phép tính sau vòng lặp: 1
+	- Số phép tính của thuật toán: 5log2n + 3
+	- Độ phức tạp của thuật toán là O(log(n))
+
+Đánh giá theo trường hợp trung bình:
+Gọi Ti(n) là trường hợp giá trị x xuất hiện ở vị trí mà sau i lần chia dãy sẽ xác định được nó.
+	- Số phép tính trước vòng lặp: 2
+	- Số phép tính trong vòng lặp: 5
+	- Số lần lặp (số lần chia dãy): i
+	- Số phép tính sau vòng lặp: 1
+	- Số phép tính Ti(n): 5i + 3
+Giả sử sự xuất hiện của x ở vị trí i lần chia dãy là như nhau: 
+	T(n) = TongXichMa i (5i + 3)*2i-1 /n,  	i = 1,.., chặn trên của log2n. 
+	= (1/n)*(20 *5*1 + 3*20 ) 
+	+ (1/n)*(21 *5*2 + 3*21 ) 
+	.... 
+	+ (1/n)*((2^(log2(n)-2) ) * 5*(log2n - 1) + 3*2^(log2(n)-2) ) 
+	+ (1/n)*((2^(log2(n)-1) ) * 5*(log2n) + 3*2^(log2(n)-1) )
+Đặt k = log^2(n) => k - 1 = log^2(n) - 1 
+	T(n) = (1/n)*(2^0 *5*1 + 3*20 ) 
+	+ (1/n)*(2^1 *5*2 + 3*21 ) 
+	.... 
+	+ (1/n)*((2^(k-2) ) * 5*(k-1) + 3*2^(k-2) ) 
+	+ (1/n)*((2^(k-1) ) * 5*k + 3*2^(k-1) )
+Xét: 
+	S(n) = 2^0 *1+2^1 *2+..+2^(k-2) * (k-1)+2^(k-1) * k 
+	2S(n) = 2^1 *1+2^2 *2+..+2^(k-1) * (k-1)+2^(k) * k 
+	=>S(n) = -2^0 - 2^1 - .. - 2^(k-1) + 2^(k) *k 
+	= k*2^k - (2^k - 1) 
+	= (k-1)*2k + 1
+	T(n) = (1/n)(5*((k-1)*2^k + 1) + 3*(2^k - 1)) 
+	= (1/n)((5k-2)*2^k + 2) 
+	= (1/n)((5*log2(n) - 2) * 2log2n + 2) 
+	= 5*log2(n) - 2 + 2/n 
+	Độ phức tạp của thuật toán là O(log(n))
+
+
+PHẦN TỬ CẦM CANH 
+Trong tìm kiếm tuyến tính, quá trình tìm phần tử x phải kiểm tra phần tử đang xét có thuộc mảng các phần tử cần tìm hay không. Để bỏ qua việc kiểm tra này, mảng các phần tử được thêm phần tử x vào cuối để đảm bảo quá trình tìm sẽ luôn trả về một phần tử trong mảng. Phần tử thêm vào được gọi là phần tử cầm canh.
+
+Cài đặt
+int LinearSearch(int *A, int n, int x) {
+	int i = 0;
+	A[n] = x;
+	while (A[i] != x) i++;
+	if (i == n) return -1;
+	else return i;
+}
+
+Đánh giá theo trường hợp xấu nhất
+	- số phép tính trước vòng lặp: 2
+	- số phép so sánh tại vòng lặp : n + 1
+	- số phép tăng i tại vòng lặp: n
+	- số phép tính sau vòng lặp: 2
+	- số phép tính của giải thuật: 2n + 5 < 3n + 5
+	Độ phức tạp của thuật toán là: O(n).
+
+
+
+
+
+
